@@ -1,5 +1,9 @@
 module Julz
 
-# package code goes here
+  export generate
+  export destroy
 
-end # module
+  include("generate.jl")
+  include("destroy.jl")
+
+end
