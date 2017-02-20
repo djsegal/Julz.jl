@@ -7,8 +7,8 @@ module Julz
   export destroy
   export init
 
-  include("generate.jl")
-  include("destroy.jl")
-  include("init.jl")
+  include("functions/generate.jl")
+  include("functions/destroy.jl")
+  include("functions/init.jl")
 
 end
