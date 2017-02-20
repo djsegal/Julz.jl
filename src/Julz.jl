@@ -3,12 +3,12 @@ module Julz
   using Mustache
   using EnglishText
 
-  export generate
-  export destroy
-  export init
+  include("functions/get_all_files.jl")
+  include("functions/include_all_files.jl")
 
-  include("functions/generate.jl")
-  include("functions/destroy.jl")
-  include("functions/init.jl")
+  src_folder = "$(Pkg.dir())/Julz/src"
+
+  include_all_files(src_folder)
+  @export_all_files src_folder
 
 end

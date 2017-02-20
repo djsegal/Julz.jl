@@ -1,0 +1,3 @@
+macro {{ name }}({{ params }})
+
+end
