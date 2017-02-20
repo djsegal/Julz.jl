@@ -1,16 +1,16 @@
 function destroy(file_type, file_name)
 
-  files = [
-    "src/$(file_name)",
-    "test/$(file_name)_test"
+  parent_folders = [
+    "src",
+    "test"
   ]
 
-  map!(file -> "$(pwd())/$(file).jl", files)
+  for parent_folder in parent_folders
+    suffix = ( parent_folder == "test" ) ? "_test" : ""
+    file_path = "$(pwd())/$parent_folder/$(pluralize(file_type))/$file_name$suffix.jl"
 
-  for file in files
-    if !isfile(file) ; continue ; end
-
-    rm(file)
+    if !isfile(file_path) ; continue ; end
+    rm(file_path)
   end
 
 end

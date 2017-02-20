@@ -1,5 +1,8 @@
 module Julz
 
+  using Mustache
+  using EnglishText
+
   export generate
   export destroy
   export init
