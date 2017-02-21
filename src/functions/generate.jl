@@ -14,7 +14,6 @@ function generate(file_type, file_name, file_params...)
 
     if isfile(file_abs_path)
       answer = user_input("Do you want to overwrite $file_rel_path? [y/n] ");
-      println(strip(lowercase(answer)) != "y")
       if strip(lowercase(answer)) != "y" ; continue ; end
     end
 
