@@ -17,6 +17,7 @@ function init()
 
     for folder in folders
       folder_path = "$(pwd())/$parent_folder/$folder"
+      if isdir(folder_path) ; continue ; end
 
       mkdir(folder_path)
       touch("$folder_path/.keep")
