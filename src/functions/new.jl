@@ -1,6 +1,6 @@
 function new(app_name, license)
 
-  cleaned_app_name = replace(title(app_name), " ", "")
+  cleaned_app_name = class_name(app_name)
 
   PkgDev.generate(cleaned_app_name, license)
 
