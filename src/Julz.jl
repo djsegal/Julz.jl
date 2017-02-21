@@ -2,6 +2,7 @@ module Julz
 
   using Mustache
   using EnglishText
+  using PkgDev
 
   include("functions/get_all_files.jl")
   include("functions/include_all_files.jl")
