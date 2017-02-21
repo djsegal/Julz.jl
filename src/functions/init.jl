@@ -28,6 +28,7 @@ end
 
 function add_code_to_main_file(parent_folder)
   package_name = rsplit(pwd(), "/"; limit=2)[2]
+  if package_name == "Julz" ; return ; end
 
   template_dictionary = Dict()
 
@@ -43,11 +44,12 @@ function add_code_to_main_file(parent_folder)
   file = readlines(file_path)
 
   insert_index = length(file)
-  if buzz_word != ""
-    for (index, file_line) in enumerate(file)
-      if !contains(file_line, buzz_word) ; continue ; end
-      insert_index = index
-      break
+  for (index, file_line) in enumerate(file)
+    if contains(file_line, "Julz") ; return ; end
+    if contains(file_line, buzz_word) && buzz_word != ""
+      if insert_index == length(file)
+        insert_index = index
+      end
     end
   end
 
