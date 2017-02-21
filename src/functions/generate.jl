@@ -32,6 +32,7 @@ function generate_file_template(parent_folder, file_type, file_name, file_params
 
   template_dictionary = Dict()
 
+  template_dictionary["app"] = rsplit(pwd(), '/'; limit=2)[2]
   template_dictionary["name"] = file_name
   template_dictionary["title"] = title(file_name)
   template_dictionary["params"] = join(file_params, ", ")
