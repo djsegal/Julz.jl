@@ -1,0 +1,6 @@
+type {{ class }}
+
+  {{fields}}
+
+end
+
