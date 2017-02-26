@@ -1,6 +1,66 @@
 {{#docs-body bodyTitle="Introduction"}}
+
+  <h3 style="margin-top: 10px;">
+    Julz is a framework for creating scalable Julia packages.
+  </h3>
+
   <p>
-    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+    Its goal is to remove many of the petty decisions involved in starting a project and establish a standard that can be adopted by the entire Julia ecosystem. In this way it channels Ruby on Rails' mantra of “convention over configuration”:
   </p>
+
+  <ul>
+    <li>
+      tell people where files should go
+    </li>
+    <li>
+      but allow them to tweak it if they so desire
+    </li>
+  </ul>
+
+  {{paper-divider}}
+
+  <p>
+    The problem Julz attempts to resolve is architecting a Julia project that is resilient to both the frequent on-boarding/turnover of engineers as well as the mass accumulation of files. In this way, a person reading a codebase for the first time does not get bogged down by the sheer number of files that have accumulated over time inside a shallow depth src directory.
+  </p>
+
+  <p>
+    The way to alleviate this problem is to treat the src folder and the test folder as boxes that hold smaller boxes of like content. In a Julia context, this means that the src and test folder each have corresponding subdirectories for:
+  </p>
+
+  <ul>
+    <li>
+      methods
+    </li>
+    <li>
+      types
+    </li>
+    <li>
+      macros
+    </li>
+    <li>
+      etc.
+    </li>
+  </ul>
+
+  <p>
+    Each subdirectory then has an associated generator command that can be used to make files of that format.
+  </p>
+
+  <p>
+    For example, generating a Rational type with two integer fields from the command line would use boiler-plate templates to compile:
+  </p>
+
+  <ul>
+    <li>
+      a working <code>rational.jl</code> file in the <code>src/types</code> directory
+    </li>
+    <li>
+      an associated <code>rational_test.jl</code> in the <code>test/types</code> directory
+    </li>
+  </ul>
+
+  <p>
+    This may not seem like a big idea at first, but getting every project to adopt this level-deeper folder structure is the cornerstone to a successful framework. With it, packages can be created that expand on the native collection of data structures, i.e. to produce solvers, compilers, etc. Here, the addition of generators just make everything less user-error prone and promotes adequate test coverage of code.
+  </p>
+
 {{/docs-body}}

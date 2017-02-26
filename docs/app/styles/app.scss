@@ -52,3 +52,30 @@ md-card {
   display: flex;
   flex: 1 0;
 }
+
+.cs-docs-body {
+  flex: 0 0 initial;
+}
+
+.cs-docs-body md-card-title {
+  background-color: color($accent, '100');
+  flex: 0 0 auto;
+}
+
+.cs-docs-body md-card-content {
+  flex: 0 1 auto;
+  overflow-y: scroll;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 0;
+  line-height: 22px;
+}
+
+code {
+  background-color: color($accent, '100');
+  font-weight: bold;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
