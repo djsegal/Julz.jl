@@ -3,3 +3,21 @@
 *.jl.mem
 
 .DS_Store
+
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+docs/dist
+docs/tmp
+
+# dependencies
+docs/node_modules
+docs/bower_components
+
+# misc
+docs/.sass-cache
+docs/connect.lock
+docs/coverage/*
+docs/libpeerconnection.log
+npm-debug.log*
+testem.log
