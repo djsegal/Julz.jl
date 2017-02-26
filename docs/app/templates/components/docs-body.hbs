@@ -1,0 +1,10 @@
+{{#paper-card style="flex: 0 0" as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}{{bodyTitle}}{{/text.headline}}
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    {{yield}}
+  {{/card.content}}
+{{/paper-card}}

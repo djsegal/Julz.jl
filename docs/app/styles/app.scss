@@ -1,4 +1,5 @@
 $accent: "grey";
+$warn: "teal";
 
 @import 'ember-paper';
 
@@ -9,6 +10,7 @@ $accent: "grey";
 
 html, body {
   @extend .cs-full-area;
+  background-color: color($warn, '100');
 }
 
 body > .ember-view {
@@ -26,7 +28,7 @@ body > .ember-view {
 }
 
 .cs-sidenav__header img {
-  width: 75%;
+  width: 72%;
 }
 
 .inner-sidenav .active {
@@ -35,4 +37,18 @@ body > .ember-view {
 
 .submenu-item .md-list-item-inner {
   padding-left: 16px;
+}
+
+md-card {
+  flex: 1 0;
+  margin: 20px;
+}
+
+.inner-sidenav md-icon {
+  margin-right: 6px !important;
+}
+
+.cs-flex {
+  display: flex;
+  flex: 1 0;
 }

@@ -14,31 +14,31 @@
 
     {{#paper-content padding=true}}
 
-        {{#paper-list}}
+      {{#paper-list}}
 
-            {{#menu-item active=(is-active "index" currentRouteName) onClick=(transition-to "index")}}Introduction{{/menu-item}}
+        {{#menu-item active=(is-active "index" currentRouteName) onClick=(transition-to "index")}}Introduction{{/menu-item}}
 
-            {{#menu-item active=(is-active "getting-started" currentRouteName) onClick=(transition-to "getting-started")}}Getting Started{{/menu-item}}
+        {{#menu-item active=(is-active "getting-started" currentRouteName) onClick=(transition-to "getting-started")}}Getting Started{{/menu-item}}
 
-            {{#menu-item active=(is-active "cli" currentRouteName) onClick=(transition-to "cli")}}CLI{{/menu-item}}
+        {{#menu-item active=(is-active "cli" currentRouteName) onClick=(transition-to "cli")}}CLI{{/menu-item}}
 
-            {{#menu-item onClick=(action "toggleExpandedItem" "commands") expanded=commandsExpanded canExpand=true}}Commands{{/menu-item}}
+        {{#menu-item onClick=(action "toggleExpandedItem" "commands") expanded=commandsExpanded canExpand=true}}Commands{{/menu-item}}
 
-            <div class="submenu">
-              {{#liquid-if commandsExpanded}}
-                {{#submenu-item active=(is-active "commands.new" currentRouteName) onClick=(transition-to "commands.new")}}New{{/submenu-item}}
-                {{#submenu-item active=(is-active "commands.init" currentRouteName) onClick=(transition-to "commands.init")}}Init{{/submenu-item}}
-                {{#submenu-item active=(is-active "commands.generate" currentRouteName) onClick=(transition-to "commands.generate")}}Generate{{/submenu-item}}
-                {{#submenu-item active=(is-active "commands.destroy" currentRouteName) onClick=(transition-to "commands.destroy")}}Destroy{{/submenu-item}}
-                {{#submenu-item active=(is-active "commands.test" currentRouteName) onClick=(transition-to "commands.test")}}Test{{/submenu-item}}
-              {{/liquid-if}}
-            </div>
+        <div class="submenu">
+          {{#liquid-if commandsExpanded}}
+            {{#submenu-item active=(is-active "commands.new" currentRouteName) onClick=(transition-to "commands.new")}}New{{/submenu-item}}
+            {{#submenu-item active=(is-active "commands.init" currentRouteName) onClick=(transition-to "commands.init")}}Init{{/submenu-item}}
+            {{#submenu-item active=(is-active "commands.generate" currentRouteName) onClick=(transition-to "commands.generate")}}Generate{{/submenu-item}}
+            {{#submenu-item active=(is-active "commands.destroy" currentRouteName) onClick=(transition-to "commands.destroy")}}Destroy{{/submenu-item}}
+            {{#submenu-item active=(is-active "commands.test" currentRouteName) onClick=(transition-to "commands.test")}}Test{{/submenu-item}}
+          {{/liquid-if}}
+        </div>
 
       {{/paper-list}}
 
     {{/paper-content}}
   {{/paper-sidenav}}
 
-{{/paper-sidenav-container}}
+  {{outlet}}
 
-{{outlet}}
+{{/paper-sidenav-container}}
