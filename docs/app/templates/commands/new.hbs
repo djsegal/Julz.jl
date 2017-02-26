@@ -1,1 +1,60 @@
-{{outlet}}
+{{#docs-body bodyTitle="The New Command"}}
+
+  <h3>
+    Description:
+  </h3>
+
+  <p>
+
+    Starts a new Julia package using
+
+    <a target="_blank" href="https://github.com/JuliaLang/PkgDev.jl#generatepkg-license">
+      PkgDev.jl
+    </a>
+
+    .
+
+  </p>
+
+  <p>
+
+    After creation, calls
+
+    {{link-to 'Init' 'commands.init' }}
+
+    command to add more structure.
+
+  </p>
+
+  <br>
+
+  {{paper-divider}}
+
+  <br>
+
+  <h3>
+    Command:
+  </h3>
+
+  {{#code-block language='julia'}}
+
+    Julz.new(app_name, license)
+  {{/code-block}}
+
+  <br>
+
+  <h3>
+    Parameter(s):
+  </h3>
+
+  <ul>
+    <li>
+      <strong>app_name: </strong> name of package
+    </li>
+
+    <li>
+      <strong>license: </strong> code license, i.e. "MIT"
+    </li>
+  </ul>
+
+{{/docs-body}}

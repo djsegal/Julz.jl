@@ -4,6 +4,9 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
+    'ember-prism': {
+      'theme': 'coy'
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
