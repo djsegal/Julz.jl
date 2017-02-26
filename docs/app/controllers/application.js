@@ -17,10 +17,14 @@ export default Controller.extend({
     if (this.get('currentRouteName').substr(0, 6) === 'layout') {
       return 'layout';
     } else {
-      return 'demos';
+      if (this.get('currentRouteName').substr(0, 8) === 'commands') {
+        return 'commands';
+      } else {
+        return '';
+      }
     }
   }),
 
-  demosExpanded: computed.equal('expandedItem', 'demos'),
+  commandsExpanded: computed.equal('expandedItem', 'commands'),
   layoutExpanded: computed.equal('expandedItem', 'layout')
 });

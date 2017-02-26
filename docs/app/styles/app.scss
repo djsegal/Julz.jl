@@ -28,3 +28,11 @@ body > .ember-view {
 .cs-sidenav__header img {
   width: 75%;
 }
+
+.inner-sidenav .active {
+  background-color: color($accent, '200');
+}
+
+.submenu-item .md-list-item-inner {
+  padding-left: 16px;
+}

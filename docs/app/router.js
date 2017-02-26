@@ -7,6 +7,15 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('getting-started');
+  this.route('cli');
+  this.route('commands', function() {
+    this.route('generate');
+    this.route('destroy');
+    this.route('init');
+    this.route('new');
+    this.route('test');
+  });
 });
 
 export default Router;
