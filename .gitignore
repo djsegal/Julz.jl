@@ -7,17 +7,17 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-docs/dist
-docs/tmp
+**/dist
+**/tmp
 
 # dependencies
-docs/node_modules
-docs/bower_components
+**/node_modules
+**/bower_components
 
 # misc
-docs/.sass-cache
-docs/connect.lock
-docs/coverage/*
-docs/libpeerconnection.log
+**/.sass-cache
+**/connect.lock
+**/coverage/*
+**/libpeerconnection.log
 npm-debug.log*
 testem.log
