@@ -1,0 +1,30 @@
+$accent: "grey";
+
+@import 'ember-paper';
+
+.cs-full-area {
+  height: 100%;
+  width: 100%;
+}
+
+html, body {
+  @extend .cs-full-area;
+}
+
+body > .ember-view {
+  display: flex;
+  flex-direction: column;
+  @extend .cs-full-area;
+}
+
+.inner-sidenav {
+  display: flex;
+}
+
+.cs-sidenav__header {
+  background-color: color($accent, '300');
+}
+
+.cs-sidenav__header img {
+  width: 75%;
+}
