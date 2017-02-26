@@ -23,8 +23,8 @@ body > .ember-view {
   display: flex;
 }
 
-.cs-sidenav__header {
-  background-color: color($accent, '300');
+.site-content-toolbar {
+  background-color: color($accent, '300') !important;
 }
 
 .cs-sidenav__header img {
@@ -78,4 +78,8 @@ code {
   margin-right: 2px;
   padding-left: 2px;
   padding-right: 2px;
+}
+
+.cs-hidden {
+  display: none;
 }

@@ -1,11 +1,29 @@
 {{#paper-toolbar}}
+
   {{#paper-toolbar-tools}}
+
+    {{#paper-sidenav-toggle as |toggleAction|}}
+
+      {{#paper-button class=(if media.isMobile "" "cs-hidden") onClick=(action toggleAction) iconButton=true}}
+
+        {{paper-icon "menu"}}
+
+      {{/paper-button}}
+
+    {{/paper-sidenav-toggle}}
+
     <h2>
       {{link-to 'Julz' 'application' }}
     </h2>
+
     <span class="flex"></span>
+
     {{#paper-button iconButton=true href="https://github.com/djsegal/Julz.jl" target="_blank"}}
+
       {{fa-icon "github" size=2}}
+
     {{/paper-button}}
+
   {{/paper-toolbar-tools}}
+
 {{/paper-toolbar}}

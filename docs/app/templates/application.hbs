@@ -4,7 +4,9 @@
 
   {{#paper-sidenav
     class="md-whiteframe-z2"
-    lockedOpen=true}}
+    open=(and media.isMobile rightSideBarOpen)
+    lockedOpen=(not media.isMobile)
+    onToggle=(action (mut rightSideBarOpen))}}
 
     {{#paper-toolbar class="site-content-toolbar" tall=true}}
       <div class="logo layout-column layout-align-center-center cs-sidenav__header">
