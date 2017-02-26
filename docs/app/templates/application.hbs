@@ -8,7 +8,7 @@
 
     {{#paper-toolbar class="site-content-toolbar" tall=true}}
       <div class="logo layout-column layout-align-center-center cs-sidenav__header">
-        <img src="/assets/images/logo.png">
+        <img src="/{{ if isProductionEnv "Julz.jl/" }}assets/images/logo.png">
       </div>
     {{/paper-toolbar}}
 

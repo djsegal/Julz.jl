@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+import ENV from 'julz/config/environment';
+
 const { Controller, computed } = Ember;
 
 export default Controller.extend({
@@ -24,6 +26,8 @@ export default Controller.extend({
       }
     }
   }),
+
+  isProductionEnv: ( ENV.environment === 'production' ),
 
   commandsExpanded: computed.equal('expandedItem', 'commands'),
   layoutExpanded: computed.equal('expandedItem', 'layout')
