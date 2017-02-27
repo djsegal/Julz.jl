@@ -13,7 +13,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "ember test",
-    "deploy": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; sleep 1; git checkout -; rm -rf ../docs/tmp; rm -rf ../docs/../assets; mv -f ../docs/* ../; git add ..; git commit --amend -C HEAD; git push; git checkout -"
+    "deploy": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\";git checkout -;rm -rf ../docs/tmp;rm -rf ../docs/../assets;rm -rf ../docs/../bower_components;rm -rf ../docs/../dist;rm -rf ../docs/../fonts;rm -rf ../docs/../node_modules;mv -f ../docs/* ../;git add ..;git commit --amend -C HEAD;git push;git checkout -"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
