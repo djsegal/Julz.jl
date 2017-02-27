@@ -1,6 +1,78 @@
 {{#docs-body bodyTitle="Command Line Interface"}}
+
+  <h3>
+    Julz was originally designed as a command line utility.
+  </h3>
+
   <p>
-    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+    As such, it still strives to provide equal access to its functionality, whether in:
   </p>
+
+  <ul>
+    <li>
+      the Julia REPL
+    </li>
+
+    <li>
+      or a bash terminal
+    </li>
+  </ul>
+
+  {{paper-divider}}
+
+  <p>
+    To get the command line tool running, add the following alias to your <code>~/.bash_profile</code>:
+  </p>
+
+  {{#code-block language='bash'}}
+
+alias julz="julia -L ~/.julia/v0.5/Julz.jl/src/functions/cli.jl -e 'cli()' --"
+  {{/code-block}}
+
+  <br>
+
+  The Julz functions are then usable from the terminal under the following mappings:
+
+  <br>
+
+  <br>
+
+  {{#paper-data-table as |table|}}
+
+    {{#table.head as |head|}}
+      {{#head.column}}Julz Function{{/head.column}}
+      {{#head.column}}Terminal Command{{/head.column}}
+    {{/table.head}}
+
+    {{#table.body as |body|}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>Julz.new(a, b, c)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz new a b c </code>  {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>Julz.init(a, b, c)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz init a b c </code>  {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>Julz.generate(a, b, c)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz generate a b c </code>  {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>Julz.destroy(a, b, c)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz destroy a b c </code>  {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>Julz.test(a, b, c)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz test a b c </code>  {{/row.cell}}
+      {{/body.row}}
+
+    {{/table.body}}
+
+  {{/paper-data-table}}
+
 {{/docs-body}}
