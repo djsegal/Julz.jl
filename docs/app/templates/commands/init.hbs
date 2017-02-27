@@ -1,1 +1,105 @@
-{{outlet}}
+{{#docs-body bodyTitle="The Init Command"}}
+
+  <h3>
+    Command:
+  </h3>
+
+
+  {{#code-block language='julia'}}
+
+Julz.init()
+  {{/code-block}}
+
+  <br>
+
+  <h3>
+    Description:
+  </h3>
+
+  <p>
+
+    Add Julz folder and file structure to an existing Julia Package
+  </p>
+
+  <p>
+    This includes,
+
+    <br>
+
+    <ul>
+
+      <li> Adding Sub-Directories to <code>src</code> and <code>test</code> for: </li>
+
+      <ul>
+
+        <li> <code>methods</code> </li>
+
+        <li> <code>macros</code> </li>
+
+        <li> <code>types</code> </li>
+
+        <li> <code>functions</code> </li>
+
+      </ul>
+
+      <br>
+
+      <li> Modifying the Files as needed: </li>
+
+      <ul>
+
+        <li> <code>test/runtests</code> </li>
+
+        <li> <code>src/&lt;PackageName&gt;.jl</code> </li>
+
+        <li> <code> // &lt;PackageName&gt; is the name of your package (i.e. Gadfly) </code> </li>
+
+      </ul>
+
+    </ul>
+
+  </p>
+
+  <br>
+
+  {{paper-divider}}
+
+  <br>
+
+  <h3>
+    Parameter(s):
+  </h3>
+
+  {{#paper-data-table as |table|}}
+
+    {{#table.head as |head|}}
+      {{#head.column}}Name{{/head.column}}
+      {{#head.column}}Value{{/head.column}}
+    {{/table.head}}
+
+    {{#table.body as |body|}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} - {{/row.cell}}
+        {{#row.cell}} - {{/row.cell}}
+      {{/body.row}}
+
+    {{/table.body}}
+
+  {{/paper-data-table}}
+
+  <br>
+
+  <h3>
+    Source:
+  </h3>
+
+  <ul>
+    <li>
+      <a target="_blank" href="https://github.com/djsegal/Julz.jl/blob/master/src/functions/init.jl">
+        src/functions/init.jl
+      </a>
+    </li>
+  </ul>
+
+{{/docs-body}}
