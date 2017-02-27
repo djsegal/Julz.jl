@@ -4,8 +4,8 @@
 
   {{#paper-sidenav
     class="md-whiteframe-z2"
-    open=(and media.isMobile rightSideBarOpen)
-    lockedOpen=(not media.isMobile)
+    open=(and (not media.isDesktop) rightSideBarOpen)
+    lockedOpen=media.isDesktop
     onToggle=(action (mut rightSideBarOpen))}}
 
     {{#paper-toolbar class="site-content-toolbar" tall=true}}

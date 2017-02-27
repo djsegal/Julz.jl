@@ -4,7 +4,7 @@
 
     {{#paper-sidenav-toggle as |toggleAction|}}
 
-      {{#paper-button class=(if media.isMobile "" "cs-hidden") onClick=(action toggleAction) iconButton=true}}
+      {{#paper-button class=(if media.isDesktop "cs-hidden" "") onClick=(action toggleAction) iconButton=true}}
 
         {{paper-icon "menu"}}
 
