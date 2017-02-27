@@ -2,6 +2,7 @@ $accent: "grey";
 $warn: "teal";
 
 @import 'ember-paper';
+@import 'paper-data-table';
 
 .cs-full-area {
   height: 100%;
@@ -82,4 +83,8 @@ code {
 
 .cs-hidden {
   display: none;
+}
+
+md-table-container th, md-table-container td {
+  font-size: initial !important;
 }

@@ -47,13 +47,40 @@
     Parameter(s):
   </h3>
 
+  {{#paper-data-table as |table|}}
+
+    {{#table.head as |head|}}
+      {{#head.column}}Name{{/head.column}}
+      {{#head.column}}Value{{/head.column}}
+    {{/table.head}}
+
+    {{#table.body as |body|}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} app_name {{/row.cell}}
+        {{#row.cell}} name of package {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} license {{/row.cell}}
+        {{#row.cell}} code license, i.e. "MIT" {{/row.cell}}
+      {{/body.row}}
+
+    {{/table.body}}
+
+  {{/paper-data-table}}
+
+  <br>
+
+  <h3>
+    Source:
+  </h3>
+
   <ul>
     <li>
-      <strong>app_name: </strong> name of package
-    </li>
-
-    <li>
-      <strong>license: </strong> code license, i.e. "MIT"
+      <a target="_blank" href="https://github.com/djsegal/Julz.jl/blob/master/src/functions/new.jl">
+        src/functions/new.jl
+      </a>
     </li>
   </ul>
 
