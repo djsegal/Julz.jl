@@ -1,1 +1,119 @@
-{{outlet}}
+{{#docs-body bodyTitle="The Generate Command"}}
+
+  <h3>
+    Command:
+  </h3>
+
+
+  {{#code-block language='julia'}}
+
+Julz.generate(file_type, file_name, file_params...)
+  {{/code-block}}
+
+  <br>
+
+  <h3>
+    Description:
+  </h3>
+
+  <p>
+
+    Generate files according to predefined templates using a convention similar to
+
+    <a target="_blank" href="http://guides.rubyonrails.org/command_line.html#rails-generate">Rails</a>.
+
+  </p>
+
+  <p>
+
+    Optionally takes <code>file_params</code> that generate more template-specific code.
+
+  </p>
+
+  <p>
+
+    Current mappings between <code>file_type</code> and <code>file_params</code> are:
+
+  </p>
+
+  {{#paper-data-table as |table|}}
+
+    {{#table.head as |head|}}
+      {{#head.column}}<code>file_type</code>{{/head.column}}
+      {{#head.column}}<code>file_params</code> purpose{{/head.column}}
+    {{/table.head}}
+
+    {{#table.body as |body|}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>function</code> {{/row.cell}}
+        {{#row.cell}} params {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>type</code> {{/row.cell}}
+        {{#row.cell}} fields {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>macro</code> {{/row.cell}}
+        {{#row.cell}} params {{/row.cell}}
+      {{/body.row}}
+
+    {{/table.body}}
+
+  {{/paper-data-table}}
+
+  <br>
+
+  {{paper-divider}}
+
+  <br>
+
+  <h3>
+    Parameter(s):
+  </h3>
+
+  {{#paper-data-table as |table|}}
+
+    {{#table.head as |head|}}
+      {{#head.column}}Name{{/head.column}}
+      {{#head.column}}Value{{/head.column}}
+    {{/table.head}}
+
+    {{#table.body as |body|}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>file_type</code> {{/row.cell}}
+        {{#row.cell}} generator to use, i.e. <code>function</code>, <code>type</code>, <code>macro</code> {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>file_name</code> {{/row.cell}}
+        {{#row.cell}} name for templating, i.e. <code>user</code> → <code>test/types/user_test.jl</code> {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>file_params</code> {{/row.cell}}
+        {{#row.cell}} params to pass to template for rendering, i.e. <code>fields</code> or <code>params</code> {{/row.cell}}
+      {{/body.row}}
+
+    {{/table.body}}
+
+  {{/paper-data-table}}
+
+  <br>
+
+  <h3>
+    Source:
+  </h3>
+
+  <ul>
+    <li>
+      <a target="_blank" href="https://github.com/djsegal/Julz.jl/blob/master/src/functions/generate.jl">
+        src/functions/generate.jl
+      </a>
+    </li>
+  </ul>
+
+{{/docs-body}}

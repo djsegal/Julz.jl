@@ -1,1 +1,74 @@
-{{outlet}}
+{{#docs-body bodyTitle="The Destroy Command"}}
+
+  <h3>
+    Command:
+  </h3>
+
+
+  {{#code-block language='julia'}}
+
+Julz.destroy(file_type, file_name)
+  {{/code-block}}
+
+  <br>
+
+  <h3>
+    Description:
+  </h3>
+
+  <p>
+
+    Destroy files previously made by
+
+    {{link-to 'Generate' 'commands.generate' }}.
+
+  </p>
+
+  <br>
+
+  {{paper-divider}}
+
+  <br>
+
+  <h3>
+    Parameter(s):
+  </h3>
+
+  {{#paper-data-table as |table|}}
+
+    {{#table.head as |head|}}
+      {{#head.column}}Name{{/head.column}}
+      {{#head.column}}Value{{/head.column}}
+    {{/table.head}}
+
+    {{#table.body as |body|}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>file_type</code> {{/row.cell}}
+        {{#row.cell}} generator to use, i.e. <code>function</code>, <code>type</code>, <code>macro</code> {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} <code>file_name</code> {{/row.cell}}
+        {{#row.cell}} name for templating, i.e. <code>user</code> → <code>test/types/user_test.jl</code> {{/row.cell}}
+      {{/body.row}}
+
+    {{/table.body}}
+
+  {{/paper-data-table}}
+
+  <br>
+
+  <h3>
+    Source:
+  </h3>
+
+  <ul>
+    <li>
+      <a target="_blank" href="https://github.com/djsegal/Julz.jl/blob/master/src/functions/destroy.jl">
+        src/functions/destroy.jl
+      </a>
+    </li>
+  </ul>
+
+{{/docs-body}}

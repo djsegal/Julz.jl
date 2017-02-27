@@ -88,3 +88,11 @@ code {
 md-table-container th, md-table-container td {
   font-size: initial !important;
 }
+
+md-card {
+  max-width: calc(100vw - 40px);
+}
+
+pre.code-block {
+  overflow-x: scroll;
+}

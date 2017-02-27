@@ -1,6 +1,17 @@
 {{#docs-body bodyTitle="The New Command"}}
 
   <h3>
+    Command:
+  </h3>
+
+  {{#code-block language='julia'}}
+
+Julz.new(app_name, license)
+  {{/code-block}}
+
+  <br>
+
+  <h3>
     Description:
   </h3>
 
@@ -9,10 +20,7 @@
     Starts a new Julia package using
 
     <a target="_blank" href="https://github.com/JuliaLang/PkgDev.jl#generatepkg-license">
-      PkgDev.jl
-    </a>
-
-    .
+      PkgDev.jl</a>.
 
   </p>
 
@@ -33,17 +41,6 @@
   <br>
 
   <h3>
-    Command:
-  </h3>
-
-  {{#code-block language='julia'}}
-
-    Julz.new(app_name, license)
-  {{/code-block}}
-
-  <br>
-
-  <h3>
     Parameter(s):
   </h3>
 
@@ -57,12 +54,12 @@
     {{#table.body as |body|}}
 
       {{#body.row as |row|}}
-        {{#row.cell}} app_name {{/row.cell}}
+        {{#row.cell}} <code>app_name</code> {{/row.cell}}
         {{#row.cell}} name of package {{/row.cell}}
       {{/body.row}}
 
       {{#body.row as |row|}}
-        {{#row.cell}} license {{/row.cell}}
+        {{#row.cell}} <code>license</code> {{/row.cell}}
         {{#row.cell}} code license, i.e. "MIT" {{/row.cell}}
       {{/body.row}}
 
