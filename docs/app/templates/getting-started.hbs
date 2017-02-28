@@ -1,6 +1,122 @@
 {{#docs-body bodyTitle="Getting Started"}}
+
+  <h3 style="margin-top: 10px;">
+    The goal of the Julz framework is to augment Julia Packages.
+  </h3>
+
+  <br>
+
+  {{paper-divider inset=true}}
+
+  <br>
+
   <p>
-    The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-    two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+    To start adding Julz to an existing Package (i.e. one made by <a target="_blank" href="https://github.com/JuliaLang/PkgDev.jl">
+      PkgDev.jl</a>), run the following code inside Julia:
   </p>
+
+  {{#code-block language='julia'}}
+
+Pkg.clone("git://github.com/djsegal/Julz.jl.git")
+using Julz
+Julz.init()
+  {{/code-block}}
+
+  <p>
+    As described in {{link-to 'init' 'commands.init' }}, this:
+  </p>
+
+  <ul>
+    <li>modifies core files to make running and testing possible (i.e. auto exports and <code>@testset</code> wrapping)</li>
+    <li>adds the nessecary folder structure for file generation (i.e. macros folders in <code>/src</code> and <code>/test</code>)</li>
+  </ul>
+
+  <p>
+    Alternatively, you can start a {{link-to 'new' 'commands.new' }} package using the command below. This just calls <code>PkgDev.generate</code> and <code>Julz.init</code> in sequence:
+  </p>
+
+  {{#code-block language='julia'}}
+
+Julz.new(pkg_name, license)
+  {{/code-block}}
+
+  <br>
+
+  {{paper-divider inset=true}}
+
+  <br>
+
+  <p>
+    After setting up a package, files can be made using the {{link-to 'generate' 'commands.generate' }} command. For example,
+  </p>
+
+  {{#code-block language='julia'}}
+
+Julz.generate("type", "foo", "bar", "baz::Int", "qux::Float64")
+  {{/code-block}}
+
+  <p>
+    will generate these two templated files:
+  </p>
+
+  {{#code-block language='julia'}}
+
+# src/types/foo.jl
+type Foo
+
+  bar
+  baz::Int
+  qux::Float64
+
+end
+  {{/code-block}}
+
+  {{#code-block language='julia'}}
+
+# test/types/foo_test.jl
+@testset "Foo Type Tests" begin
+
+  @test isdefined(Julz, :Foo) == true
+
+end
+  {{/code-block}}
+
+  <br>
+
+  {{paper-divider inset=true}}
+
+  <br>
+
+  <p>
+    You can now run every {{link-to 'test' 'commands.test' }} using:
+  </p>
+
+  {{#code-block language='julia'}}
+
+Julz.test()
+  {{/code-block}}
+
+  <p>
+    And when you get bored of the <code>foo</code> type, {{link-to 'destroy' 'commands.destroy' }} it with:
+  </p>
+
+  {{#code-block language='julia'}}
+
+Julz.destroy("type", "foo")
+  {{/code-block}}
+
+  <br>
+
+  {{paper-divider inset=true}}
+
+  <br>
+
+  <p>
+    If you have any questions, comments, or concerns, feel free to drop an issue on <a target="_blank" href="https://github.com/djsegal/Julz.jl/issues">github</a>.
+  </p>
+
+  <p>
+    Thanks for reading.
+  </p>
+
 {{/docs-body}}
