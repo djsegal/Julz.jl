@@ -1,8 +1,8 @@
 new(args::Dict) = _new(args::Dict)
 
 function _new(args::Dict)
-  app_name = args["<app_path>"]
+  pkg_name = args["<pkg_path>"]
   license = args["<license>"]
 
-  new(app_name, license)
+  new(pkg_name, license)
 end
