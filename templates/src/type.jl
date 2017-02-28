@@ -3,4 +3,3 @@ type {{ class }}
   {{fields}}
 
 end
-
