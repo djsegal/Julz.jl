@@ -1,4 +1,4 @@
-<div align="center"> <img
+<div> <img
 src="https://raw.githubusercontent.com/djsegal/Julz.jl/master/docs/public/assets/images/logo.png"
 alt="Julz" width="250"></img> </div>
 
