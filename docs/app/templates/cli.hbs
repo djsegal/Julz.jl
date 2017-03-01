@@ -47,28 +47,28 @@ alias julz="julia -L ~/.julia/v0.5/Julz.jl/src/functions/cli.jl -e 'cli()' --"
     {{#table.body as |body|}}
 
       {{#body.row as |row|}}
-        {{#row.cell}} <code>Julz.new(a, b, c)</code> {{/row.cell}}
-        {{#row.cell}} <code>julz new a b c </code>  {{/row.cell}}
+        {{#row.cell}} <code>Julz.new("a", "b", ...)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz new a b ... </code>  {{/row.cell}}
       {{/body.row}}
 
       {{#body.row as |row|}}
-        {{#row.cell}} <code>Julz.init(a, b, c)</code> {{/row.cell}}
-        {{#row.cell}} <code>julz init a b c </code>  {{/row.cell}}
+        {{#row.cell}} <code>Julz.init("a", "b", ...)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz init a b ... </code>  {{/row.cell}}
       {{/body.row}}
 
       {{#body.row as |row|}}
-        {{#row.cell}} <code>Julz.generate(a, b, c)</code> {{/row.cell}}
-        {{#row.cell}} <code>julz generate a b c </code>  {{/row.cell}}
+        {{#row.cell}} <code>Julz.generate("a", "b", ...)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz generate a b ... </code>  {{/row.cell}}
       {{/body.row}}
 
       {{#body.row as |row|}}
-        {{#row.cell}} <code>Julz.destroy(a, b, c)</code> {{/row.cell}}
-        {{#row.cell}} <code>julz destroy a b c </code>  {{/row.cell}}
+        {{#row.cell}} <code>Julz.destroy("a", "b", ...)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz destroy a b ... </code>  {{/row.cell}}
       {{/body.row}}
 
       {{#body.row as |row|}}
-        {{#row.cell}} <code>Julz.test(a, b, c)</code> {{/row.cell}}
-        {{#row.cell}} <code>julz test a b c </code>  {{/row.cell}}
+        {{#row.cell}} <code>Julz.test("a", "b", ...)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz test a b ... </code>  {{/row.cell}}
       {{/body.row}}
 
     {{/table.body}}
