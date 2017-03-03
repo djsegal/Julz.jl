@@ -95,3 +95,9 @@ md-card {
 pre.code-block {
   overflow-x: scroll;
 }
+
+@media (min-width: 1051px) and (max-width: 1200px) {
+  .cs-cli-alias {
+    max-width: 60vw;
+  }
+}
