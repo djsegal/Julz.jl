@@ -2,4 +2,20 @@
 
   @test isdefined(Julz, :cli) == true
 
+  originalSTDOUT = STDOUT
+
+  (outRead, outWrite) = redirect_stdout()
+
+  run(`julia -L $(Pkg.dir("Julz"))/src/functions/cli.jl -e 'cli()' -- hello`)
+
+  close(outWrite)
+
+  data = readavailable(outRead)
+
+  close(outRead)
+
+  redirect_stdout(originalSTDOUT)
+
+  @test String(data) == "Hello, World!\n"
+
 end
