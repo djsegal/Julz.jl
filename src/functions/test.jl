@@ -1,3 +1,3 @@
 function test()
-  include("test/runtests.jl")
+  include("$(pwd())/test/runtests.jl")
 end
