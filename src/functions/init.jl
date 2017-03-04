@@ -13,6 +13,7 @@ function init()
   ]
 
   remove_default_test()
+  remove_default_comments()
 
   for parent_folder in parent_folders
     add_code_to_main_file(parent_folder)
@@ -26,6 +27,22 @@ function init()
     end
   end
 
+end
+
+function remove_default_comments()
+  package_name = rsplit(pwd(), "/"; limit=2)[2]
+
+  main_file_path = "$(pwd())/src/$package_name.jl"
+  main_file_text = readstring(main_file_path)
+
+  line_1 = "# package code goes here"
+  line_2 = "end # module"
+  default_main = "\n$line_1\n\n$line_2"
+
+  new_file = replace(main_file_text, default_main, "\nend")
+  open(main_file_path, "w") do old_file
+    write(old_file, new_file)
+  end
 end
 
 function remove_default_test()
