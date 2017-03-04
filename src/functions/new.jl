@@ -1,4 +1,4 @@
-function new(pkg_name, license)
+function new(pkg_name, license="null")
 
   initial_dir = pwd()
 
