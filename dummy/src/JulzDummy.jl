@@ -1,4 +1,4 @@
-module Dummy
+module JulzDummy
 
   using Julz
 
@@ -7,6 +7,4 @@ module Dummy
   Julz.include_all_files(src_folder)
   Julz.@export_all_files src_folder
 
-# package code goes here
-
-end # module
+end

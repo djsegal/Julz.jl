@@ -78,7 +78,7 @@ function add_code_to_main_file(parent_folder)
 
   insert_index = length(file)
   for (index, file_line) in enumerate(file)
-    if contains(file_line, "Julz") ; return ; end
+    if ismatch(r"(?<!\w)Julz(?!\w)", file_line) ; return ; end
     if contains(file_line, buzz_word) && buzz_word != ""
       if insert_index == length(file)
         insert_index = index
