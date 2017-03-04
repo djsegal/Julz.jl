@@ -6,7 +6,7 @@
 
   cd("tmp")
 
-  package_name = "TestPackage.jl"
+  package_name = "NewTestPackage.jl"
 
   rm(package_name, force=true, recursive=true)
 
