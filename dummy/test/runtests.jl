@@ -6,6 +6,4 @@ using Base.Test
   Julz.include_all_files("$(pwd())/test")
 end
 
-@test true
-
 return
