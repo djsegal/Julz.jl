@@ -25,7 +25,7 @@ function generate(file_type, file_name, file_params...)
 end
 
 function generate_file_template(parent_folder, file_type, file_name, file_params)
-  template_path = "$(Pkg.dir())/Julz/templates/$parent_folder/$(file_type).jl"
+  template_path = "$(dirname(@__FILE__))/../../templates/$parent_folder/$(file_type).jl"
 
   template = readstring(template_path)
 
