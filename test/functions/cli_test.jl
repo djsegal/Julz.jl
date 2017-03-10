@@ -6,7 +6,7 @@
 
   (outRead, outWrite) = redirect_stdout()
 
-  run(`julia -L $(Pkg.dir("Julz"))/src/functions/cli.jl -e 'cli()' -- hello`)
+  run(`julia -L $(dirname(@__FILE__))/../../../Julz/src/functions/cli.jl -e 'cli()' -- hello`)
 
   close(outWrite)
 
