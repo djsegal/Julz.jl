@@ -14,6 +14,7 @@ Router.map(function() {
     this.route('destroy');
     this.route('init');
     this.route('new');
+    this.route('test');
   });
 });
 

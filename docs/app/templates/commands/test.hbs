@@ -1,0 +1,67 @@
+{{#docs-body bodyTitle="The Test Command"}}
+
+  <h3>
+    Command:
+  </h3>
+
+
+  {{#code-block language='julia'}}
+
+Julz.test()
+  {{/code-block}}
+
+  <br>
+
+  <h3>
+    Description:
+  </h3>
+
+  <p>
+
+    Run the entire test suite.
+
+  </p>
+
+  <br>
+
+  {{paper-divider}}
+
+  <br>
+
+  <h3>
+    Parameter(s):
+  </h3>
+
+  {{#paper-data-table as |table|}}
+
+    {{#table.head as |head|}}
+      {{#head.column}}Name{{/head.column}}
+      {{#head.column}}Value{{/head.column}}
+    {{/table.head}}
+
+    {{#table.body as |body|}}
+
+      {{#body.row as |row|}}
+        {{#row.cell}} none {{/row.cell}}
+        {{#row.cell}} - {{/row.cell}}
+      {{/body.row}}
+
+    {{/table.body}}
+
+  {{/paper-data-table}}
+
+  <br>
+
+  <h3>
+    Source:
+  </h3>
+
+  <ul>
+    <li>
+      <a target="_blank" href="https://github.com/djsegal/Julz.jl/blob/master/src/functions/test.jl">
+        src/functions/test.jl
+      </a>
+    </li>
+  </ul>
+
+{{/docs-body}}
