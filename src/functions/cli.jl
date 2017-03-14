@@ -2,7 +2,7 @@ doc = """
 julz
 
 Usage:
-  julz new <app_path> <license> [options]
+  julz new <pkg_name> <license> [options]
   julz init [options]
   julz generate <generator> <name> [<field>...] [options]
   julz destroy <generator> <name> [<field>...] [options]
