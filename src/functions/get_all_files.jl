@@ -29,7 +29,9 @@ end
 function clean_files_list(nested_files)
   delete_list = []
 
-  package_name = rsplit(pwd(), "/"; limit=2)[2]
+  split_limit = endswith(pwd(), "/test") ? 3 : 2
+  package_name = replace(rsplit(pwd(), "/"; limit=split_limit)[2], ".jl", "")
+
   push!(delete_list, "$package_name.jl")
   push!(delete_list, "Julz.jl")
 

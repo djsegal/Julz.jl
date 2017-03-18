@@ -16,7 +16,7 @@
   (errRead, errWrite) = redirect_stderr()
   (outRead, outWrite) = redirect_stdout()
 
-  Julz.test(true)
+  Julz.test()
 
   close(errWrite)
   close(outWrite)
