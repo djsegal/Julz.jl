@@ -15,6 +15,7 @@ Router.map(function() {
     this.route('init');
     this.route('new');
     this.route('test');
+    this.route('run');
   });
 });
 

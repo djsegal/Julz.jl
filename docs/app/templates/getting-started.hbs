@@ -88,7 +88,16 @@ end
   <br>
 
   <p>
-    You can now run every {{link-to 'test' 'commands.test' }} using:
+    You can now {{link-to 'run' 'commands.run' }} your code using:
+  </p>
+
+  {{#code-block language='julia'}}
+
+Julz.run()
+  {{/code-block}}
+
+  <p>
+    And {{link-to 'test' 'commands.test' }} everything using:
   </p>
 
   {{#code-block language='julia'}}
@@ -97,7 +106,7 @@ Julz.test()
   {{/code-block}}
 
   <p>
-    And when you get bored of the <code>foo</code> type, you can {{link-to 'destroy' 'commands.destroy' }} it with:
+    Then when you get bored of the <code>foo</code> type, you can {{link-to 'destroy' 'commands.destroy' }} it with:
   </p>
 
   {{#code-block language='julia'}}
