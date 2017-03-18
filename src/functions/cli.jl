@@ -7,11 +7,13 @@ Usage:
   julz generate <generator> <name> [<field>...] [options]
   julz destroy <generator> <name> [<field>...] [options]
   julz test [options]
+  julz run [options]
   julz -h | --help
   julz --version
   julz g <generator> <name> [<field>...] [options]
   julz d <generator> <name> [<field>...] [options]
   julz t [options]
+  julz r [options]
   julz hello
 
 Options:
@@ -38,7 +40,8 @@ function cli()
   aliases = Dict(
     "g" => "generate",
     "d" => "destroy",
-    "t" => "test"
+    "t" => "test",
+    "r" => "run"
   )
 
   for (key, value) in arguments

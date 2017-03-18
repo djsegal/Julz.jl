@@ -12,4 +12,8 @@ module Julz
   include_all_files(src_folder)
   @export_all_files src_folder
 
+  function main()
+    println("done.")
+  end
+
 end

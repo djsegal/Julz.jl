@@ -6,3 +6,7 @@
 
   Julz.include_all_files(src_folder)
   Julz.@export_all_files src_folder
+
+  function main()
+    println("done.")
+  end
