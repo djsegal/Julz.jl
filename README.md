@@ -9,7 +9,7 @@ A framework for creating scalable Julia packages.
 ## Installation
 
 ```julia
-Pkg.clone("git://github.com/djsegal/Julz.jl.git")
+Pkg.add("Julz")
 ```
 
 ## Documentation
