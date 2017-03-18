@@ -67,6 +67,11 @@ alias julz="julia -L ~/.julia/v0.5/Julz.jl/src/functions/cli.jl -e 'cli()' --"
       {{/body.row}}
 
       {{#body.row as |row|}}
+        {{#row.cell}} <code>Julz.run("a", "b", ...)</code> {{/row.cell}}
+        {{#row.cell}} <code>julz run a b ... </code>  {{/row.cell}}
+      {{/body.row}}
+
+      {{#body.row as |row|}}
         {{#row.cell}} <code>Julz.test("a", "b", ...)</code> {{/row.cell}}
         {{#row.cell}} <code>julz test a b ... </code>  {{/row.cell}}
       {{/body.row}}
