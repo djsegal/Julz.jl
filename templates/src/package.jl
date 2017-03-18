@@ -1,5 +1,5 @@
 
-  using Julz
+  import Julz
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
   src_folder = "$(pwd())/src"

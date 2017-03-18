@@ -5,7 +5,7 @@ cd("dummy")
 Julz.generate("function", "roo")
 
 module Woof
-  using Julz
+  import Julz
   Julz.include_all_files("$(pwd())/src/functions")
   Julz.@export_all_files "$(pwd())/src/functions"
 end

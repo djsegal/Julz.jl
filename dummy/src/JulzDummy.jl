@@ -1,6 +1,6 @@
 module JulzDummy
 
-  using Julz
+  import Julz
 
   src_folder = "$(pwd())/src"
 

@@ -29,7 +29,7 @@ Help:
 """
 
 using DocOpt  # import docopt function
-using Julz
+import Julz
 
 function cli()
 

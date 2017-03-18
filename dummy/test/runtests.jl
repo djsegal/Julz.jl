@@ -1,6 +1,6 @@
 if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
-using JulzDummy
+import JulzDummy
 using Base.Test
 
 @testset "All Tests" begin

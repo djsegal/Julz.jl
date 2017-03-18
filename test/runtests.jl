@@ -1,4 +1,4 @@
-using Julz
+import Julz
 using Base.Test
 
 @testset "All Tests" begin
