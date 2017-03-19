@@ -7,6 +7,7 @@ function init()
 
   folders = [
     "functions",
+    "constants",
     "methods",
     "macros",
     "types"
