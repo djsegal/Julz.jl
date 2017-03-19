@@ -11,6 +11,30 @@ function destroy(file_type, file_name)
 
     if !isfile(file_path) ; continue ; end
     rm(file_path)
+
+    folder_paths = []
+
+    nested_path, parsed_file_name = contains(file_name, "/") ?
+      rsplit(file_name, "/"; limit=2) : ("", file_name)
+
+    parsed_file_name = String(parsed_file_name)
+
+    current_nested_path = ""
+    for nested_ancestor in split(nested_path, "/")
+      current_nested_path = "$current_nested_path/$nested_ancestor"
+      folder_path = "$(pwd())/$parent_folder/$(pluralize(file_type))$current_nested_path"
+
+      push!(folder_paths, folder_path)
+    end
+
+    reverse!(folder_paths)
+
+    for nested_path in folder_paths
+      if length(readdir(nested_path)) != 0
+        break
+      end
+      rm(nested_path)
+    end
   end
 
 end
