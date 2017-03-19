@@ -30,7 +30,7 @@ function init()
 end
 
 function remove_default_comments()
-  package_name = rsplit(pwd(), "/"; limit=2)[2]
+  package_name = replace(rsplit(pwd(), "/"; limit=2)[2], ".jl", "")
 
   main_file_path = "$(pwd())/src/$package_name.jl"
   main_file_text = readstring(main_file_path)
@@ -60,7 +60,7 @@ function remove_default_test()
 end
 
 function add_code_to_main_file(parent_folder)
-  package_name = rsplit(pwd(), "/"; limit=2)[2]
+  package_name = replace(rsplit(pwd(), "/"; limit=2)[2], ".jl", "")
   if package_name == "Julz" ; return ; end
 
   template_dictionary = Dict()
