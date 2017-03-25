@@ -1,3 +1,10 @@
+function destroy(args::Dict)
+  file_type = args["<generator>"]
+  file_name = args["<name>"]
+
+  destroy(file_type, file_name)
+end
+
 function destroy(file_type, file_name)
 
   parent_folders = [

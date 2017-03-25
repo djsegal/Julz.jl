@@ -4,8 +4,8 @@ module Julz
   using EnglishText
   using PkgDev
 
-  include("functions/get_all_files.jl")
-  include("functions/include_all_files.jl")
+  include("functions/utils/get_all_files.jl")
+  include("functions/utils/include_all_files.jl")
 
   src_folder = dirname(@__FILE__)
 

@@ -36,8 +36,8 @@ function clean_files_list(nested_files)
   push!(delete_list, "Julz.jl")
 
   push!(delete_list, "test/runtests.jl")
-  push!(delete_list, "src/functions/include_all_files.jl")
-  push!(delete_list, "src/functions/get_all_files.jl")
+  push!(delete_list, "src/functions/utils/include_all_files.jl")
+  push!(delete_list, "src/functions/utils/get_all_files.jl")
 
   for deleted_file in delete_list
     for (index, nested_file) in enumerate(nested_files)

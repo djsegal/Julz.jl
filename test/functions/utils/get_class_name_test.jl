@@ -1,4 +1,4 @@
-@testset "Get Class Name Method Tests" begin
+@testset "Get Class Name Function Tests" begin
 
   @test isdefined(Julz, :get_class_name) == true
 

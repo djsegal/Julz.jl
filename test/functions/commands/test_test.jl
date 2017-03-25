@@ -4,7 +4,7 @@
 
   initial_dir = pwd()
 
-  dummy_package = "$(dirname(@__FILE__))/../../../JulzDummy"
+  dummy_package = "$(dirname(@__FILE__))/../../../../JulzDummy"
 
   cp("dummy", dummy_package, remove_destination=true)
 

@@ -1,4 +1,4 @@
-@testset "Title Method Tests" begin
+@testset "Title Function Tests" begin
 
   @test isdefined(Julz, :title) == true
 

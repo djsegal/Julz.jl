@@ -1,3 +1,10 @@
+function new(args::Dict)
+  pkg_name = args["<pkg_name>"]
+  license = args["<license>"]
+
+  new(pkg_name, license)
+end
+
 function new(pkg_name, license="null")
 
   initial_dir = pwd()

@@ -1,3 +1,7 @@
+function init(args::Dict)
+  init()
+end
+
 function init()
 
   parent_folders = [
@@ -8,7 +12,6 @@ function init()
   folders = [
     "functions",
     "constants",
-    "methods",
     "macros",
     "types"
   ]
@@ -71,7 +74,7 @@ function add_code_to_main_file(parent_folder)
 
   template_name, file_name, buzz_word = template_dictionary[parent_folder]
 
-  template_path = "$(dirname(@__FILE__))/../../templates/$parent_folder/$(template_name).jl"
+  template_path = "$(dirname(@__FILE__))/../../../templates/$parent_folder/$(template_name).jl"
   file_path = "$(pwd())/$parent_folder/$file_name.jl"
 
   template = readlines(template_path)
