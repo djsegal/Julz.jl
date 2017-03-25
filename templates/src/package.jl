@@ -7,6 +7,8 @@
   Julz.include_all_files(src_folder)
   Julz.@export_all_files src_folder
 
+  include("$(pwd())/input.jl")
+
   function main()
     println("done.")
   end

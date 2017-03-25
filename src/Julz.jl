@@ -12,6 +12,8 @@ module Julz
   include_all_files(src_folder)
   @export_all_files src_folder
 
+  include("../input.jl")
+
   function main()
     println("done.")
   end
