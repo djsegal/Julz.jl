@@ -33,7 +33,7 @@ function init()
     end
   end
 
-  setup_gitignore()
+  setup_base_dir()
   setup_config()
   setup_docs()
 
@@ -104,21 +104,43 @@ function add_code_to_main_file(parent_folder)
   end
 end
 
-function setup_gitignore()
+function setup_base_dir()
 
-  open(".gitignore", "a") do gitignore
-    write(gitignore, "\n.DS_Store")
-    write(gitignore, "\ndocs/build/**/*")
+  open(".gitignore", "a") do gitignore_file
+    write(gitignore_file, "\n.DS_Store")
+    write(gitignore_file, "\ndocs/build/**/*")
+  end
+
+  open("REQUIRE", "a") do require_file
+    write(require_file, "Julz")
+  end
+
+  package_name = replace(rsplit(pwd(), "/"; limit=2)[2], ".jl", "")
+
+  cfg = LibGit2.GitConfig(LibGit2.Consts.CONFIG_LEVEL_GLOBAL)
+  user_email = LibGit2.get(cfg, "user.email", "")
+
+  travis_script = "script:
+ - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+ - julia -e 'Pkg.clone(pwd());'
+ - (echo \"y\" && echo \"$package_name Test\" && echo \"$user_email\" && echo \"$package_name Test\" && echo \"n\" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
+ - julia -e 'Pkg.build(\"$package_name\"); Pkg.test(\"$package_name\"; coverage=true)'"
+
+  open(".travis.yml", "a") do require_file
+    write(require_file, travis_script)
   end
 
 end
 
 function setup_config()
 
-  mkdir("$(pwd())/config")
-  mkdir("$(pwd())/config/initializers")
+  config_dir = "$(pwd())/config"
 
-  file_path = "$(pwd())/config/bootload.jl"
+  mkdir(config_dir)
+  mkdir("$config_dir/initializers")
+  touch("$config_dir/initializers/.keep")
+
+  file_path = "$config_dir/bootload.jl"
   bootload_file = generate_file_template("config", "bootload")
   open(file_path, "w") do file
     write(file, bootload_file)
