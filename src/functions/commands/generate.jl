@@ -8,6 +8,11 @@ end
 
 function generate(file_type, file_name, file_params...)
 
+  if file_type == "init"
+    touch("$(pwd())/config/initializers/$file_name.jl")
+    return
+  end
+
   parent_folders = [
     "src",
     "test"

@@ -34,6 +34,7 @@ function init()
   end
 
   setup_gitignore()
+  setup_config()
   setup_docs()
 
 end
@@ -108,6 +109,19 @@ function setup_gitignore()
   open(".gitignore", "a") do gitignore
     write(gitignore, "\n.DS_Store")
     write(gitignore, "\ndocs/build/**/*")
+  end
+
+end
+
+function setup_config()
+
+  mkdir("$(pwd())/config")
+  mkdir("$(pwd())/config/initializers")
+
+  file_path = "$(pwd())/config/bootload.jl"
+  bootload_file = generate_file_template("config", "bootload")
+  open(file_path, "w") do file
+    write(file, bootload_file)
   end
 
 end

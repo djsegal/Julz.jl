@@ -6,7 +6,7 @@ function test()
 
   package_name = rsplit(pwd(), "/"; limit=2)[2]
 
-  package_dir = rsplit(dirname(@__FILE__), "/"; limit=5)[1]
+  package_dir = rsplit(dirname(@__FILE__), "/"; limit=9)[1]
 
   target_name = replace(package_name, ".jl", "")
 

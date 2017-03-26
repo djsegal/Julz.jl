@@ -24,7 +24,6 @@ function include_all_files(cur_item)
 
     if new_file_count == 0
       bad_file = unloaded_files[1]
-      println(bad_file)
       include(bad_file)
     end
   end
