@@ -6,8 +6,9 @@ Usage:
   julz init [options]
   julz generate <generator> <name> [<field>...] [options]
   julz destroy <generator> <name> [<field>...] [options]
-  julz test [options]
   julz run [options]
+  julz test [options]
+  julz docs [options]
   julz -h | --help
   julz --version
   julz g <generator> <name> [<field>...] [options]

@@ -45,20 +45,3 @@ function generate(file_type, file_name, file_params...)
   end
 
 end
-
-function generate_file_template(parent_folder, file_type, file_name, file_params)
-  template_path = "$(dirname(@__FILE__))/../../../templates/$parent_folder/$(file_type).jl"
-
-  template = readstring(template_path)
-
-  template_dictionary = Dict()
-
-  template_dictionary["app"] = replace(rsplit(pwd(), "/"; limit=2)[2], ".jl", "")
-  template_dictionary["name"] = file_name
-  template_dictionary["title"] = title(file_name)
-  template_dictionary["class"] = get_class_name(file_name)
-  template_dictionary["params"] = join(file_params, ", ")
-  template_dictionary["fields"] = join(file_params, "\n  ")
-
-  render(template, template_dictionary)
-end

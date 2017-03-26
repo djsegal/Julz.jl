@@ -33,6 +33,9 @@ function init()
     end
   end
 
+  setup_gitignore()
+  setup_docs()
+
 end
 
 function remove_default_comments()
@@ -98,4 +101,32 @@ function add_code_to_main_file(parent_folder)
   open(file_path, "w") do old_file
     write(old_file, file)
   end
+end
+
+function setup_gitignore()
+
+  open(".gitignore", "a") do gitignore
+    write(gitignore, "\n.DS_Store")
+    write(gitignore, "\ndocs/build/**/*")
+  end
+
+end
+
+function setup_docs()
+
+  mkdir("$(pwd())/docs")
+  mkdir("$(pwd())/docs/src")
+
+  file_path = "$(pwd())/docs/make.jl"
+  make_file = generate_file_template("docs", "make")
+  open(file_path, "w") do file
+    write(file, make_file)
+  end
+
+  file_path = "$(pwd())/docs/src/index.md"
+  make_file = generate_file_template("docs", "index.md")
+  open(file_path, "w") do file
+    write(file, make_file)
+  end
+
 end
