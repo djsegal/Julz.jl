@@ -2,6 +2,8 @@ function new(args::Dict)
   pkg_name = args["<pkg_name>"]
   license = args["<license>"]
 
+  if license == "mit" ; license = "MIT" ; end
+
   new(pkg_name, license)
 end
 
