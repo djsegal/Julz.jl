@@ -2,8 +2,9 @@ main_folder = "$(dirname(@__FILE__))/.."
 
 include("$main_folder/src/functions/utils/get_all_files.jl")
 include("$main_folder/src/functions/utils/include_all_files.jl")
+include("$main_folder/src/macros/export_all_files.jl")
 
-loaded_folders = [ "src", "config/initializers" ]
+loaded_folders = [ "config/initializers", "src" ]
 
 for loaded_folder in loaded_folders
   loaded_folder = "$main_folder/$loaded_folder"

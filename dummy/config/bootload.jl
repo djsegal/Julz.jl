@@ -1,6 +1,6 @@
 main_folder = pwd()
 
-loaded_folders = [ "src", "config/initializers" ]
+loaded_folders = [ "config/initializers", "src" ]
 
 for loaded_folder in loaded_folders
   loaded_folder = "$main_folder/$loaded_folder"
