@@ -108,7 +108,8 @@ function setup_base_dir()
 
   open(".gitignore", "a") do gitignore_file
     write(gitignore_file, "\n.DS_Store")
-    write(gitignore_file, "\ndocs/build/**/*")
+    write(gitignore_file, "\n/tmp/*")
+    write(gitignore_file, "\n/docs/build/*")
   end
 
   open("REQUIRE", "a") do require_file
