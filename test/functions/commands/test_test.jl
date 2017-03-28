@@ -16,7 +16,14 @@
   (errRead, errWrite) = redirect_stderr()
   (outRead, outWrite) = redirect_stdout()
 
-  Julz.test()
+  println("\ndummy start\n")
+  did_break = false
+  try
+    Julz.test()
+  catch
+    did_break = true
+  end
+  println("dummy end")
 
   close(errWrite)
   close(outWrite)
@@ -35,5 +42,25 @@
   rm(dummy_package, force=true, recursive=true)
 
   @test contains(String(err_data), "INFO: JulzDummy tests passed")
+
+  if did_break
+
+    println(" ================================ ")
+    println("  dummy broken test output (out)  ")
+    println(" ================================ ")
+
+    println(String(out_data))
+
+    println(" ================================ ")
+    println("  dummy broken test output (err)  ")
+    println(" ================================ ")
+
+    println(String(err_data))
+
+    println(" ================================ ")
+    println("  dummy broken test output (end)  ")
+    println(" ================================ ")
+
+  end
 
 end
