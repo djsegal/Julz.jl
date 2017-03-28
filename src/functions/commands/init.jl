@@ -106,6 +106,10 @@ end
 
 function setup_base_dir()
 
+  tmp_dir = "$(pwd())/tmp"
+  mkdir(tmp_dir)
+  touch("$tmp_dir/.keep")
+
   open(".gitignore", "a") do gitignore_file
     write(gitignore_file, "\n.DS_Store")
     write(gitignore_file, "\n/tmp/*")
