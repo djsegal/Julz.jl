@@ -1,16 +1,10 @@
 using Documenter, {{ app }}
 
 makedocs(
-  format = :html,
-  modules = [ {{ app }} ],
-  sitename = "{{ app }}",
-  pages = [
-  ]
+  format = :html
+  sitename = "{{ app }}.jl"
 )
 
 deploydocs(
-  repo   = "github.com/{{ user }}/{{ app }}.jl.git",
-  target = "build",
-  deps   = nothing,
-  make   = nothing
+  repo   = "github.com/{{ user }}/{{ app }}.jl.git"
 )

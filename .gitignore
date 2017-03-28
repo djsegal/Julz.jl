@@ -22,6 +22,7 @@ docs/**/tmp
 npm-debug.log*
 testem.log
 
-DS_Store
+.DS_Store
 /tmp/*
-/docs/build/*
+docs/build/
+docs/site/

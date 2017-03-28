@@ -110,29 +110,39 @@ function setup_base_dir()
   mkdir(tmp_dir)
   touch("$tmp_dir/.keep")
 
+  package_name = replace(rsplit(pwd(), "/"; limit=2)[2], ".jl", "")
+
+  user_name = LibGit2.getconfig("github.user", "")
+
+  cfg = LibGit2.GitConfig(LibGit2.Consts.CONFIG_LEVEL_GLOBAL)
+  user_email = LibGit2.get(cfg, "user.email", "")
+
+  open("README.md", "a") do readme_file
+    write(readme_file, "\n[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://$user_name.github.io/$package_name.jl/stable)\n")
+    write(readme_file, "\n[![](https://img.shields.io/badge/docs-latest-blue.svg)](https://$user_name.github.io/$package_name.jl/latest)\n")
+  end
+
   open(".gitignore", "a") do gitignore_file
     write(gitignore_file, "\n.DS_Store")
     write(gitignore_file, "\n/tmp/*")
-    write(gitignore_file, "\n/docs/build/*")
+    write(gitignore_file, "\ndocs/build")
+    write(gitignore_file, "\ndocs/site")
   end
 
   open("REQUIRE", "a") do require_file
     write(require_file, "Julz")
   end
 
-  package_name = replace(rsplit(pwd(), "/"; limit=2)[2], ".jl", "")
-
-  cfg = LibGit2.GitConfig(LibGit2.Consts.CONFIG_LEVEL_GLOBAL)
-  user_email = LibGit2.get(cfg, "user.email", "")
-
-  travis_script = "script:
- - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
- - julia -e 'Pkg.clone(pwd());'
- - (echo \"y\" && echo \"$package_name Test\" && echo \"$user_email\" && echo \"$package_name Test\" && echo \"n\" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
- - julia -e 'Pkg.build(\"$package_name\"); Pkg.test(\"$package_name\"; coverage=true)'"
+  travis_code = "  - julia -e 'Pkg.add(\"Documenter\")'
+  - julia -e 'cd(Pkg.dir(\"$package_name\")); include(joinpath(\"docs\", \"make.jl\"))'
+script:
+  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+  - julia -e 'Pkg.clone(pwd());'
+  - (echo \"y\" && echo \"$package_name Test\" && echo \"$user_email\" && echo \"$package_name Test\" && echo \"n\" && yes && cat) | julia -e 'using PkgDev; PkgDev.config();'
+  - julia -e 'Pkg.build(\"$package_name\"); Pkg.test(\"$package_name\"; coverage=true)'"
 
   open(".travis.yml", "a") do require_file
-    write(require_file, travis_script)
+    write(require_file, travis_code)
   end
 
 end
