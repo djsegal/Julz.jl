@@ -1,6 +1,11 @@
-function get_all_files(cur_item)
+function get_all_files(cur_item; is_testing=false)
   nested_files = get_nested_files(cur_item)
   clean_files_list(nested_files)
+
+  sort!(nested_files)
+  if is_testing
+    shuffle!(nested_files)
+  end
 
   nested_files
 end
