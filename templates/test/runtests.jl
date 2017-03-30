@@ -6,7 +6,10 @@
   srand(seed_int)
   println("\n Seed: $seed_int \n")
 
-  Julz.include_all_files("$(pwd())/test", is_testing=true)
+  Julz.include_all_files(
+    "$(pwd())/test", is_testing=true,
+    reload_function={{ app }}.load_input
+  )
 end
 
 return

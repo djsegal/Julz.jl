@@ -1,4 +1,4 @@
-function include_all_files(cur_item; is_testing=false)
+function include_all_files(cur_item; is_testing=false, reload_function=Nullable)
   loaded_files = []
   all_files = get_all_files(cur_item, is_testing=is_testing)
   unloaded_files = setdiff(all_files, loaded_files)
@@ -12,6 +12,15 @@ function include_all_files(cur_item; is_testing=false)
 
       try
         include(file)
+
+        if is_testing
+          if reload_function == Nullable
+            error("Need to pass reload_function for tests")
+          end
+
+          input_file_name = "$main_folder/input.jl"
+          reload_function(input_file_name, true)
+        end
       catch
         continue
       end
