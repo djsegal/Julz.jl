@@ -80,10 +80,9 @@ function add_code_to_main_file(parent_folder)
 
   template_name, file_name, buzz_word = template_dictionary[parent_folder]
 
-  template_path = "$(dirname(@__FILE__))/../../../templates/$parent_folder/$(template_name).jl"
   file_path = "$(pwd())/$parent_folder/$file_name.jl"
 
-  template = readlines(template_path)
+  template = generate_file_template(parent_folder, template_name)
   file = readlines(file_path)
 
   insert_index = length(file)
@@ -96,8 +95,8 @@ function add_code_to_main_file(parent_folder)
     end
   end
 
-  unshift!(template, file[insert_index])
-  splice!(file, insert_index, template)
+  new_text_array = ["$(file[insert_index])$template"]
+  splice!(file, insert_index, new_text_array)
 
   open(file_path, "w") do old_file
     write(old_file, file)
