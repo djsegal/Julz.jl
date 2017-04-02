@@ -6,6 +6,8 @@ makedocs(
   sitename = "{{ app }}.jl",
   pages = Any[
     "Home" => "index.md",
+    "Code" => "code.md",
+    "Glossary" => "glossary.md"
   ]
 )
 

@@ -2,14 +2,3 @@
 
 ```@contents
 ```
-
-## Code
-
-```@autodocs
-Modules[{{ app }}]
-```
-
-## Index
-
-```@index
-```

@@ -173,10 +173,15 @@ function setup_docs()
     write(file, make_file)
   end
 
-  file_path = "$(pwd())/docs/src/index.md"
-  make_file = generate_file_template("docs", "index.md")
-  open(file_path, "w") do file
-    write(file, make_file)
+  doc_files = ["index", "code", "glossary"]
+
+  for doc_file in doc_files
+    file_path = "$(pwd())/docs/src/$doc_file.md"
+    make_file = generate_file_template("docs", "$doc_file.md")
+
+    open(file_path, "w") do file
+      write(file, make_file)
+    end
   end
 
 end
