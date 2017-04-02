@@ -2,38 +2,36 @@
 
   @test isdefined(Julz, :init) == true
 
-  initial_dir = pwd()
+  cd("tmp") do
 
-  cd("tmp")
+    package_name = "InitTestPackage"
 
-  package_name = "InitTestPackage"
+    rm(package_name, force=true, recursive=true)
 
-  rm(package_name, force=true, recursive=true)
+    originalSTDERR = STDERR
 
-  originalSTDERR = STDERR
+    (errRead, errWrite) = redirect_stderr()
 
-  (errRead, errWrite) = redirect_stderr()
+    PkgDev.generate(package_name, "MIT", path=pwd())
 
-  PkgDev.generate(package_name, "MIT", path=pwd())
+    cd(package_name) do
 
-  cd(package_name)
+      @test !isdir("src/types")
 
-  @test !isdir("src/types")
+      Julz.init()
 
-  Julz.init()
+      @test isdir("src/types")
 
-  @test isdir("src/types")
+    end
 
-  cd("$initial_dir/tmp")
+    rm(package_name, force=true, recursive=true)
 
-  rm(package_name, force=true, recursive=true)
+    close(errWrite)
 
-  close(errWrite)
+    close(errRead)
 
-  close(errRead)
+    redirect_stderr(originalSTDERR)
 
-  redirect_stderr(originalSTDERR)
-
-  cd(initial_dir)
+  end
 
 end

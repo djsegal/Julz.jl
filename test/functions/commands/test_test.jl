@@ -2,42 +2,43 @@
 
   @test isdefined(Julz, :test) == true
 
-  initial_dir = pwd()
-
   dummy_package = "$(dirname(@__FILE__))/../../../../JulzDummy"
 
   cp("dummy", dummy_package, remove_destination=true)
 
-  cd(dummy_package)
-
-  originalSTDERR = STDERR
-  originalSTDOUT = STDOUT
-
-  (errRead, errWrite) = redirect_stderr()
-  (outRead, outWrite) = redirect_stdout()
-
-  println("\ndummy start\n")
+  err_data = "nil"
+  out_data = "nil"
   did_break = false
-  try
-    Julz.test()
-  catch
-    did_break = true
+
+  cd(dummy_package) do
+
+    originalSTDERR = STDERR
+    originalSTDOUT = STDOUT
+
+    (errRead, errWrite) = redirect_stderr()
+    (outRead, outWrite) = redirect_stdout()
+
+    println("\ndummy start\n")
+    try
+      Julz.test()
+    catch
+      did_break = true
+    end
+    println("dummy end")
+
+    close(errWrite)
+    close(outWrite)
+
+    err_data = readavailable(errRead)
+    out_data = readavailable(outRead)
+
+    close(errRead)
+    close(outRead)
+
+    redirect_stderr(originalSTDERR)
+    redirect_stdout(originalSTDOUT)
+
   end
-  println("dummy end")
-
-  close(errWrite)
-  close(outWrite)
-
-  err_data = readavailable(errRead)
-  out_data = readavailable(outRead)
-
-  close(errRead)
-  close(outRead)
-
-  redirect_stderr(originalSTDERR)
-  redirect_stdout(originalSTDOUT)
-
-  cd(initial_dir)
 
   rm(dummy_package, force=true, recursive=true)
 

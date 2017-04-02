@@ -2,38 +2,36 @@
 
   @test isdefined(Julz, :new) == true
 
-  initial_dir = pwd()
+  cd("tmp") do
 
-  cd("tmp")
+    package_name = "NewTestPackage.jl"
 
-  package_name = "NewTestPackage.jl"
+    rm(package_name, force=true, recursive=true)
 
-  rm(package_name, force=true, recursive=true)
+    originalSTDERR = STDERR
 
-  originalSTDERR = STDERR
+    (errRead, errWrite) = redirect_stderr()
 
-  (errRead, errWrite) = redirect_stderr()
+    @test_throws Pkg.PkgError Julz.new(package_name)
 
-  @test_throws Pkg.PkgError Julz.new(package_name)
+    license = "MIT"
 
-  license = "MIT"
+    Julz.new(package_name, license)
 
-  Julz.new(package_name, license)
+    close(errWrite)
 
-  close(errWrite)
+    close(errRead)
 
-  close(errRead)
+    redirect_stderr(originalSTDERR)
 
-  redirect_stderr(originalSTDERR)
+    cd(package_name) do
 
-  cd(package_name)
+      @test isfile("src/$package_name")
 
-  @test isfile("src/$package_name")
+    end
 
-  cd("$initial_dir/tmp")
+    rm(package_name, force=true, recursive=true)
 
-  rm(package_name, force=true, recursive=true)
-
-  cd(initial_dir)
+  end
 
 end

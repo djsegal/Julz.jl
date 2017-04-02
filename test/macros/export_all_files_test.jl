@@ -1,13 +1,13 @@
-initial_dir = pwd()
+cd("dummy") do
 
-cd("dummy")
+  Julz.generate("function", "roo")
 
-Julz.generate("function", "roo")
+end
 
 module Woof
   import Julz
-  Julz.include_all_files("$(pwd())/src/functions")
-  Julz.@export_all_files "$(pwd())/src/functions"
+  Julz.include_all_files("$(pwd())/dummy/src/functions")
+  Julz.@export_all_files "$(pwd())/dummy/src/functions"
 end
 
 @testset "Export All Files Macro Tests" begin
@@ -16,8 +16,10 @@ end
 
   @test isdefined(Woof, :roo) == true
 
-  Julz.destroy("function", "roo")
+  cd("dummy") do
 
-  cd(initial_dir)
+    Julz.destroy("function", "roo")
+
+  end
 
 end

@@ -2,9 +2,7 @@
 
   @test isdefined(Julz, :generate) == true
 
-  initial_dir = pwd()
-
-  cd("dummy")
+  cd("dummy") do
 
   file_type = "type"
 
@@ -24,6 +22,6 @@
   rm(src_file)
   rm(test_file)
 
-  cd(initial_dir)
+  end
 
 end

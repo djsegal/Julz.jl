@@ -2,24 +2,22 @@
 
   @test isdefined(Julz, :get_all_files) == true
 
-  initial_dir = pwd()
+  cd("dummy") do
 
-  cd("dummy")
+    @test length(Julz.get_all_files("src")) == 1
+    @test length(Julz.get_all_files("test")) == 0
 
-  @test length(Julz.get_all_files("src")) == 1
-  @test length(Julz.get_all_files("test")) == 0
+    Julz.generate("type", "foo")
 
-  Julz.generate("type", "foo")
+    @test length(Julz.get_all_files("src")) == 2
+    @test length(Julz.get_all_files("test")) == 1
 
-  @test length(Julz.get_all_files("src")) == 2
-  @test length(Julz.get_all_files("test")) == 1
+    Julz.destroy("type", "foo")
 
-  Julz.destroy("type", "foo")
+    @test length(Julz.get_all_files("src")) == 1
+    @test length(Julz.get_all_files("test")) == 0
 
-  @test length(Julz.get_all_files("src")) == 1
-  @test length(Julz.get_all_files("test")) == 0
-
-  cd(initial_dir)
+  end
 
   main_file = Julz.get_all_files("dummy/src")[1]
 
