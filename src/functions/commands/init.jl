@@ -132,8 +132,7 @@ function setup_base_dir()
     write(require_file, "Julz")
   end
 
-  travis_code = "  - julia -e 'Pkg.add(\"Documenter\")'
-  - julia -e 'cd(Pkg.dir(\"$package_name\")); include(joinpath(\"docs\", \"make.jl\"))'
+  travis_code = "  - julia -e 'cd(Pkg.dir(\"$package_name\")); Pkg.add(\"Documenter\"); using Documenter; include(joinpath(\"docs\", \"make.jl\"))'
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   - julia -e 'Pkg.clone(pwd());'
