@@ -6,5 +6,7 @@
   include("../config/bootload.jl")
 
   function main()
+    load_input("input.jl", true)
+
     println("done.")
   end

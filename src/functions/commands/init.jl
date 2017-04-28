@@ -16,7 +16,10 @@ function init()
     "types"
   ]
 
+  touch("$(pwd())/defaults.jl")
+
   touch("$(pwd())/input.jl")
+  touch("$(pwd())/test/input.jl")
 
   remove_default_test()
   remove_default_comments()

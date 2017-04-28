@@ -18,7 +18,10 @@ function include_all_files(cur_item; is_testing=false, reload_function=Nullable)
             error("Need to pass reload_function for tests")
           end
 
-          input_file_name = "$main_folder/input.jl"
+          defaults_file_name = "defaults.jl"
+          reload_function(defaults_file_name, true)
+
+          input_file_name = "test/input.jl"
           reload_function(input_file_name, true)
         end
       catch

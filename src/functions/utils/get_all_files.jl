@@ -42,6 +42,10 @@ function clean_files_list(nested_files)
 
   push!(delete_list, "test/runtests.jl")
 
+  push!(delete_list, "/defaults.jl")
+
+  push!(delete_list, "/input.jl")
+
   push!(delete_list, "src/functions/utils/get_all_files.jl")
   push!(delete_list, "src/functions/utils/include_all_files.jl")
   push!(delete_list, "src/macros/export_all_files.jl")
