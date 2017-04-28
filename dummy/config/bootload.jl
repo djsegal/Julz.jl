@@ -11,7 +11,7 @@ end
 
 function load_input(raw_input, is_file=false)
   if is_file
-    open("$main_folder/input.jl") do file
+    open(raw_input) do file
       file_lines = map(x -> strip(x), readlines(file))
       raw_input = join(file_lines, ";")
     end
