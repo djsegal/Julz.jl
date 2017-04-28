@@ -1,7 +1,8 @@
 import Julz
 using Base.Test
+using TestSetExtensions
 
-@testset "All Tests" begin
+@testset DottedTestSet "All Tests" begin
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
   seed_int = abs(rand(Int16))
