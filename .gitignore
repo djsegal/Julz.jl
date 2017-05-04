@@ -26,3 +26,5 @@ testem.log
 /tmp/*
 docs/build/
 docs/site/
+
+*-checkpoint.ipynb

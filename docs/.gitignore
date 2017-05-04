@@ -19,3 +19,5 @@ testem.log
 .DS_Store
 /tmp/*
 /docs/build/*
+
+*-checkpoint.ipynb

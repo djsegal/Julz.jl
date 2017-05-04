@@ -130,6 +130,7 @@ function setup_base_dir()
     write(gitignore_file, "\n/tmp/*")
     write(gitignore_file, "\ndocs/build")
     write(gitignore_file, "\ndocs/site")
+    write(gitignore_file, "\n*-checkpoint.ipynb")
   end
 
   open("REQUIRE", "a") do require_file
