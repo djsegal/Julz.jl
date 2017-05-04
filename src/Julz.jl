@@ -6,6 +6,8 @@ module Julz
 
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
+  if ( endswith(pwd(), "/lib/notebooks") ) ; cd("../..") ; end
+
   include("../config/bootload.jl")
 
   function main()
