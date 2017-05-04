@@ -39,6 +39,7 @@ function init()
   setup_base_dir()
   setup_config()
   setup_docs()
+  setup_lib()
 
 end
 
@@ -186,4 +187,13 @@ function setup_docs()
     end
   end
 
+end
+
+function setup_lib()
+  lib_folder = "$(pwd())/lib"
+  if isdir(lib_folder) ; return ; end
+
+  mkdir("$lib_folder")
+  mkdir("$lib_folder/notebooks")
+  touch("$lib_folder/notebooks/.keep")
 end
