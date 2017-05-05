@@ -195,6 +195,10 @@ function setup_lib()
   if isdir(lib_folder) ; return ; end
 
   mkdir("$lib_folder")
+
   mkdir("$lib_folder/notebooks")
   touch("$lib_folder/notebooks/.keep")
+
+  mkdir("$lib_folder/input_decks")
+  touch("$lib_folder/input_decks/.keep")
 end
