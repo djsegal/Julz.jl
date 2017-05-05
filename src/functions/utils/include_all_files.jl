@@ -11,18 +11,15 @@ function include_all_files(cur_item; is_testing=false, is_focused=false, reload_
       if is_already_loaded ; continue ; end
 
       try
-        if is_testing && is_focused
-          if !check_for_focus(file)
+        if is_testing
+          ignore_file = is_focused && !check_for_focus(file)
+          ignore_file |= check_for_skip(file)
+
+          if ignore_file
             push!(loaded_files, file)
             new_file_count += 1
             continue
           end
-        end
-
-        if is_testing && check_for_skip(file)
-          push!(loaded_files, file)
-          new_file_count += 1
-          continue
         end
 
         include(file)
