@@ -1,4 +1,4 @@
-function include_all_files(cur_item; is_testing=false, reload_function=Nullable)
+function include_all_files(cur_item; is_testing=false, is_focused=false, reload_function=Nullable)
   loaded_files = []
   all_files = get_all_files(cur_item, is_testing=is_testing)
   unloaded_files = setdiff(all_files, loaded_files)
@@ -11,6 +11,20 @@ function include_all_files(cur_item; is_testing=false, reload_function=Nullable)
       if is_already_loaded ; continue ; end
 
       try
+        if is_testing && is_focused
+          if !check_for_focus(file)
+            push!(loaded_files, file)
+            new_file_count += 1
+            continue
+          end
+        end
+
+        if is_testing && check_for_skip(file)
+          push!(loaded_files, file)
+          new_file_count += 1
+          continue
+        end
+
         include(file)
 
         if is_testing
