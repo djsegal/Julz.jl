@@ -13,7 +13,8 @@ function init()
     "functions",
     "constants",
     "macros",
-    "types"
+    "types",
+    "modules"
   ]
 
   touch("$(pwd())/defaults.jl")

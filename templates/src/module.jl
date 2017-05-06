@@ -1,0 +1,5 @@
+module {{ class }}
+
+  {{fields}}
+
+end

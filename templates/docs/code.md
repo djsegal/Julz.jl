@@ -27,3 +27,10 @@ Order = [:constant]
 Modules = [{{ app }}]
 Order = [:macro]
 ```
+
+## Modules
+
+```@autodocs
+Modules = [{{ app }}]
+Order = [:module]
+```
