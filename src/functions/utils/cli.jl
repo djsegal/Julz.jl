@@ -9,12 +9,14 @@ Usage:
   julz run [options]
   julz test [options]
   julz docs [options]
+  julz notebook [options]
   julz -h | --help
   julz --version
   julz g <generator> <name> [<field>...] [options]
   julz d <generator> <name> [<field>...] [options]
   julz t [options]
   julz r [options]
+  julz n [options]
   julz hello
 
 Options:
@@ -39,6 +41,7 @@ function cli()
   arguments = docopt(doc, version=v"2.0.0")
 
   aliases = Dict(
+    "n" => "notebook",
     "g" => "generate",
     "d" => "destroy",
     "t" => "test",
