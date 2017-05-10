@@ -13,11 +13,9 @@ function run()
   target_path = "$package_dir/$target_name"
 
   if target_path != pwd()
-    initial_dir = pwd()
-
-    cd("..")
-    cp(package_name, target_path, remove_destination=true)
-    cd(initial_dir)
+    cd("..") do
+      cp(package_name, target_path, remove_destination=true)
+    end
   end
 
   if !isdefined(Symbol(target_name))
