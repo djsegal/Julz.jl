@@ -23,6 +23,8 @@ function load_input(raw_input, is_file=false)
 
       raw_input = replace(raw_input, "(;", "(")
       raw_input = replace(raw_input, ",;", ",")
+
+      raw_input *= "; nothing ;"
     end
   end
 
