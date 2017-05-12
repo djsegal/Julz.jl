@@ -1,6 +1,6 @@
-function get_all_files(cur_item; is_testing=false)
+function get_all_files(cur_item; package_name=nothing, is_testing=false)
   nested_files = get_nested_files(cur_item)
-  clean_files_list(nested_files)
+  clean_files_list(nested_files, package_name)
 
   sort!(nested_files)
   if is_testing
@@ -31,14 +31,16 @@ function get_nested_files(cur_item)
   return nested_files
 end
 
-function clean_files_list(nested_files)
+function clean_files_list(nested_files, package_name=nothing)
   delete_list = []
 
-  split_limit = endswith(pwd(), "/test") ? 3 : 2
-  package_name = replace(rsplit(pwd(), "/"; limit=split_limit)[2], ".jl", "")
+  if package_name == nothing
+    split_limit = endswith(pwd(), "/test") ? 3 : 2
+    package_name = replace(rsplit(pwd(), "/"; limit=split_limit)[2], ".jl", "")
+  end
 
-  push!(delete_list, "$package_name.jl")
-  push!(delete_list, "Julz.jl")
+  push!(delete_list, "src/$package_name.jl")
+  push!(delete_list, "src/Julz.jl")
 
   push!(delete_list, "test/runtests.jl")
 

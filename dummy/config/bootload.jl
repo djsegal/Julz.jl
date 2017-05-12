@@ -1,11 +1,11 @@
-main_folder = pwd()
+main_folder = "$(dirname(@__FILE__))/.."
 
 loaded_folders = [ "config/initializers", "src" ]
 
 for loaded_folder in loaded_folders
   loaded_folder = "$main_folder/$loaded_folder"
 
-  Julz.include_all_files(loaded_folder)
+  Julz.include_all_files(loaded_folder, package_name="JulzDummy")
   @eval Julz.@export_all_files $loaded_folder
 end
 

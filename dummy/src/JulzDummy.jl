@@ -2,11 +2,9 @@ module JulzDummy
 
   import Julz
 
-  if ( endswith(pwd(), "/test") ) ; cd("..") ; end
-
-  if ( endswith(pwd(), "/lib/notebooks") ) ; cd("../..") ; end
-
-  include("../config/bootload.jl")
+  cd("$(dirname(@__FILE__))/..") do
+    include("../config/bootload.jl")
+  end
 
   function main()
     load_input("input.jl", true)
