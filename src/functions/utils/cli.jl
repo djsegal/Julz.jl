@@ -10,6 +10,7 @@ Usage:
   julz test [options]
   julz docs [options]
   julz notebook [options]
+  julz bump [options]
   julz -h | --help
   julz --version
   julz g <generator> <name> [<field>...] [options]
@@ -17,6 +18,7 @@ Usage:
   julz t [options]
   julz r [options]
   julz n [options]
+  julz b [options]
   julz hello
 
 Options:
@@ -45,7 +47,8 @@ function cli()
     "g" => "generate",
     "d" => "destroy",
     "t" => "test",
-    "r" => "run"
+    "r" => "run",
+    "b" => "bump"
   )
 
   for (key, value) in arguments
