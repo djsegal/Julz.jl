@@ -11,6 +11,8 @@ Usage:
   julz docs [options]
   julz notebook [options]
   julz bump [options]
+  julz install <pkg_name> [options]
+  julz update [options]
   julz -h | --help
   julz --version
   julz g <generator> <name> [<field>...] [options]
