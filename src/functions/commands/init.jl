@@ -139,6 +139,9 @@ function setup_base_dir()
   end
 
   travis_code = "  - julia -e 'cd(Pkg.dir(\"$package_name\")); Pkg.add(\"Documenter\"); using Documenter; include(joinpath(\"docs\", \"make.jl\"))'
+matrix:
+  allow_failures:
+  - julia: nightly
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
   - julia -e 'Pkg.clone(pwd());'
