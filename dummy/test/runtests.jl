@@ -13,8 +13,10 @@ using TestSetExtensions
 
   is_focused = Julz.check_for_focus(test_dir)
 
+  is_sorted = JulzDummy.tests_are_sorted
+
   Julz.include_all_files( test_dir,
-    is_testing=true, is_focused=is_focused,
+    is_testing=true, is_focused=is_focused, is_sorted=is_sorted,
     reload_function=JulzDummy.load_input
   )
 

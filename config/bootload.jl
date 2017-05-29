@@ -13,12 +13,16 @@ for loaded_folder in loaded_folders
   @eval Julz.@export_all_files $loaded_folder
 end
 
-function load_input(raw_input, is_file_input=false)
+function load_input(raw_input, is_file_input=false, can_be_missing=false)
   if is_file_input
     file_path = "$main_folder/$raw_input"
 
     if !isfile(file_path)
       file_path = "$main_folder/lib/input_decks/$raw_input"
+    end
+
+    if !isfile(file_path)
+      if can_be_missing ; return ; end
     end
 
     open(file_path) do file
@@ -39,3 +43,6 @@ end
 
 defaults_file_name = "defaults.jl"
 load_input(defaults_file_name, true)
+
+defaults_file_name = "tmp/scratch.jl"
+load_input(defaults_file_name, true, true)

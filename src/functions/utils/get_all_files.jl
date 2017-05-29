@@ -1,9 +1,9 @@
-function get_all_files(cur_item; package_name=nothing, is_testing=false)
+function get_all_files(cur_item; package_name=nothing, is_testing=false, is_sorted=false)
   nested_files = get_nested_files(cur_item)
   clean_files_list(nested_files, package_name)
 
   sort!(nested_files)
-  if is_testing
+  if is_testing && !is_sorted
     shuffle!(nested_files)
   end
 

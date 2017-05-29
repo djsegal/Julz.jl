@@ -17,7 +17,7 @@ Usage:
   julz --version
   julz g <generator> <name> [<field>...] [options]
   julz d <generator> <name> [<field>...] [options]
-  julz t [options]
+  julz t [-s | --sorted] [options]
   julz r [options]
   julz n [options]
   julz b [options]

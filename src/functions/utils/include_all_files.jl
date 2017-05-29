@@ -1,6 +1,6 @@
-function include_all_files(cur_item; package_name=nothing, is_testing=false, is_focused=false, reload_function=Nullable)
+function include_all_files(cur_item; package_name=nothing, is_testing=false, is_focused=false, is_sorted=false, reload_function=Nullable)
   loaded_files = []
-  all_files = get_all_files(cur_item, package_name=package_name, is_testing=is_testing)
+  all_files = get_all_files(cur_item, package_name=package_name, is_testing=is_testing, is_sorted=is_sorted)
   unloaded_files = setdiff(all_files, loaded_files)
 
   while length(unloaded_files) > 0
