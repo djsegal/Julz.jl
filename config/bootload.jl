@@ -45,4 +45,4 @@ defaults_file_name = "defaults.jl"
 load_input(defaults_file_name, true)
 
 scratch_file_name = "tmp/scratch.jl"
-load_input(scratch_file_name, true, true)
+Julz.load_input(scratch_file_name, true, true)

@@ -7,7 +7,11 @@ end
 
 function test(is_sorted=false)
 
-  open("tmp/scratch.jl", "w") do f
+  scratch_file = "$(dirname(@__FILE__))"
+  scratch_file *= "/../../../"
+  scratch_file *= "tmp/scratch.jl"
+
+  open(scratch_file, "w") do f
     write(f, "tests_are_sorted = $is_sorted \n")
   end
 
