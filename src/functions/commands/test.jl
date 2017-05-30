@@ -1,8 +1,10 @@
 function test(args::Dict)
+
   is_sorted = args["--sorted"]
   is_sorted |= args["-s"]
 
   test(is_sorted)
+
 end
 
 function test(is_sorted=false)
@@ -18,5 +20,9 @@ function test(is_sorted=false)
   target_name = bump()
 
   Pkg.test(target_name)
+
+  open(scratch_file, "w") do f
+    write(f, "")
+  end
 
 end
