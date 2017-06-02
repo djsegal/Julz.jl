@@ -50,6 +50,8 @@ function print_workspace(cur_module)
 
   dash_line_length = length(string(cur_module)) + 2
 
+  truncate_length = ( 80 - 5 - longest_name )
+
   module_header = "\n\n"
   module_header *= "-" ^ dash_line_length
   module_header *= "\n $(cur_module) \n"
@@ -65,7 +67,7 @@ function print_workspace(cur_module)
 
     if isa(cur_value, String)
       truncated_value = SubString(
-        cur_value, 1, 50
+        cur_value, 1, truncate_length
       )
     end
 
