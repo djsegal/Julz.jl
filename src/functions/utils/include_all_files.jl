@@ -11,7 +11,9 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
       if is_already_loaded ; continue ; end
 
       try
+
         if is_testing
+
           ignore_file = is_focused && !check_for_focus(file)
           ignore_file |= check_for_skip(file)
 
@@ -20,11 +22,7 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
             new_file_count += 1
             continue
           end
-        end
 
-        include(file)
-
-        if is_testing
           if reload_function == Nullable
             error("Need to pass reload_function for tests")
           end
@@ -34,7 +32,11 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
 
           input_file_name = "test/input.jl"
           reload_function(input_file_name, true)
+
         end
+
+        include(file)
+
       catch
         continue
       end
