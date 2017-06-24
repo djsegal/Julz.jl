@@ -2,20 +2,29 @@
 
   @test isdefined(Julz, :run) == true
 
-  originalSTDOUT = STDOUT
+  run_examples = Dict(
+    "main" => "done.\n",
+    "example_task" => "404\n"
+  )
 
-  (outRead, outWrite) = redirect_stdout()
+  for (cur_task, cur_output) in run_examples
 
-  Julz.run()
+    originalSTDOUT = STDOUT
 
-  close(outWrite)
+    (outRead, outWrite) = redirect_stdout()
 
-  data = readavailable(outRead)
+    Julz.run(cur_task)
 
-  close(outRead)
+    close(outWrite)
 
-  redirect_stdout(originalSTDOUT)
+    data = readavailable(outRead)
 
-  @test String(data) == "done.\n"
+    close(outRead)
+
+    redirect_stdout(originalSTDOUT)
+
+    @test String(data) == cur_output
+
+  end
 
 end

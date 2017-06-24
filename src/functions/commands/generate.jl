@@ -13,6 +13,18 @@ function generate(file_type, file_name, file_params...)
     return
   end
 
+  if file_type == "task"
+    file_abs_path = "$(pwd())/lib/tasks/$file_name.jl"
+
+    template_file = generate_file_template("src", "function", file_name, file_params)
+
+    open(file_abs_path, "w") do file
+      write(file, template_file)
+    end
+
+    return
+  end
+
   parent_folders = [
     "src",
     "test"

@@ -6,7 +6,7 @@ Usage:
   julz init [options]
   julz generate <generator> <name> [<field>...] [options]
   julz destroy <generator> <name> [<field>...] [options]
-  julz run [options]
+  julz run [<task>] [options]
   julz test [options]
   julz docs [options]
   julz notebook [options]
@@ -18,7 +18,7 @@ Usage:
   julz g <generator> <name> [<field>...] [options]
   julz d <generator> <name> [<field>...] [options]
   julz t [-s | --sorted] [options]
-  julz r [options]
+  julz r [<task>] [options]
   julz n [options]
   julz b [options]
   julz hello

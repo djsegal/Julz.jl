@@ -1,8 +1,16 @@
 function run(args::Dict)
-  run()
+
+  cur_task = args["<task>"]
+
+  if cur_task == nothing
+    cur_task = "main"
+  end
+
+  run(cur_task::String)
+
 end
 
-function run()
+function run(cur_task::String)
 
   target_name = bump()
 
@@ -10,6 +18,6 @@ function run()
     eval(parse("using $target_name"))
   end
 
-  eval(parse("$target_name.main()"))
+  eval(parse("$target_name.$cur_task()"))
 
 end

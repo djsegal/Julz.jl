@@ -200,9 +200,10 @@ function setup_lib()
 
   mkdir("$lib_folder")
 
-  mkdir("$lib_folder/notebooks")
-  touch("$lib_folder/notebooks/.keep")
+  cur_sub_dirs = [ "notebooks" , "input_decks" , "tasks" ]
 
-  mkdir("$lib_folder/input_decks")
-  touch("$lib_folder/input_decks/.keep")
+  for cur_sub_dir in cur_sub_dirs
+    mkdir("$lib_folder/$cur_sub_dir")
+    touch("$lib_folder/$cur_sub_dir/.keep")
+  end
 end
