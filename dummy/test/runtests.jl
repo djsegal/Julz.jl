@@ -2,7 +2,7 @@ using JulzDummy
 using Base.Test
 using TestSetExtensions
 
-@testset DottedTestSet "All Tests" begin
+@testset ExtendedTestSet "All Tests" begin
   if ( endswith(pwd(), "/test") ) ; cd("..") ; end
 
   seed_int = abs(rand(Int16))
