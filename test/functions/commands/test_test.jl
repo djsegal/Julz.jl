@@ -42,7 +42,7 @@
 
   rm(dummy_package, force=true, recursive=true)
 
-  @test contains(String(err_data), "INFO: JulzDummy tests passed")
+  @test contains(String(err_data), "JulzDummy tests passed")
 
   if did_break
 
