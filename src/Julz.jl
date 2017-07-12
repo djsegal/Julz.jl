@@ -4,6 +4,7 @@ module Julz
   using EnglishText
   using PkgDev
   using DataStructures
+  using Revise
 
   cd("$(dirname(@__FILE__))/..") do
     include("../config/bootload.jl")

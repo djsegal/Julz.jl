@@ -3,6 +3,8 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
   all_files = get_all_files(cur_item, package_name=package_name, is_testing=is_testing, is_sorted=is_sorted)
   unloaded_files = setdiff(all_files, loaded_files)
 
+  cur_module = eval(parse("Main.$package_name"))
+
   while length(unloaded_files) > 0
     new_file_count = 0
 
@@ -36,6 +38,13 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
         end
 
         include(file)
+
+        skip_revise = contains(file, "config/initializers")
+        skip_revise |= contains(file, "src/modules")
+
+        if !skip_revise
+          Revise.track(cur_module, file)
+        end
 
       catch
         continue
