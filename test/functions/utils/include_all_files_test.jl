@@ -8,7 +8,7 @@
 
     @test isdefined(:baz) != true
 
-    Julz.include_all_files("$(pwd())/src/functions")
+    Julz.include_all_files("$(pwd())/src/functions", is_revised=false)
 
     @test isdefined(:baz) == true
 

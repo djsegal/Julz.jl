@@ -1,4 +1,4 @@
-function include_all_files(cur_item; package_name=nothing, is_testing=false, is_focused=false, is_sorted=false, reload_function=Nullable)
+function include_all_files(cur_item; package_name=nothing, is_testing=false, is_focused=false, is_sorted=false, reload_function=Nullable, is_revised=true)
   loaded_files = []
   all_files = get_all_files(cur_item, package_name=package_name, is_testing=is_testing, is_sorted=is_sorted)
   unloaded_files = setdiff(all_files, loaded_files)
@@ -39,7 +39,8 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
 
         include(file)
 
-        skip_revise = contains(file, "config/initializers")
+        skip_revise = is_testing || !is_revised
+        skip_revise |= contains(file, "config/initializers")
         skip_revise |= contains(file, "src/modules")
 
         if !skip_revise

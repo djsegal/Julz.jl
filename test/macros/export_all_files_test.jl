@@ -6,7 +6,7 @@ end
 
 module Woof
   import Julz
-  Julz.include_all_files("$(pwd())/dummy/src/functions")
+  Julz.include_all_files("$(pwd())/dummy/src/functions", is_revised=false)
   Julz.@export_all_files "$(pwd())/dummy/src/functions"
 end
 
