@@ -9,6 +9,7 @@ Usage:
   julz run [<task>] [options]
   julz test [options]
   julz docs [options]
+  julz console [options]
   julz notebook [options]
   julz bump [options]
   julz install <pkg_name> [options]
@@ -17,8 +18,9 @@ Usage:
   julz --version
   julz g <generator> <name> [<field>...] [options]
   julz d <generator> <name> [<field>...] [options]
-  julz t [-s | --sorted] [options]
   julz r [<task>] [options]
+  julz t [-s | --sorted] [options]
+  julz c [options]
   julz n [options]
   julz b [options]
   julz hello
@@ -48,6 +50,7 @@ function cli()
     "n" => "notebook",
     "g" => "generate",
     "d" => "destroy",
+    "c" => "console",
     "t" => "test",
     "r" => "run",
     "b" => "bump"
