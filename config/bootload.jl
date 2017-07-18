@@ -45,9 +45,3 @@ function load_input(raw_input, is_file_input=false, can_be_missing=false)
 end
 
 print_workspace() = Julz.print_workspace(Julz)
-
-defaults_file_name = "defaults.jl"
-load_input(defaults_file_name, true)
-
-scratch_file_name = "tmp/scratch.jl"
-Julz.load_input(scratch_file_name, true, true)

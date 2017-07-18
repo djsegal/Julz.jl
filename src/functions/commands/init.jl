@@ -103,6 +103,13 @@ function add_code_to_main_file(parent_folder)
   new_text_array = ["$(file[insert_index])$template"]
   splice!(file, insert_index, new_text_array)
 
+  needs_precompile_line = ( parent_folder == "src" )
+  needs_precompile_line &= !contains(file[1], "__precompile__()")
+
+  if needs_precompile_line
+    file[1] = "__precompile__()\n\n$(file[1])"
+  end
+
   open(file_path, "w") do old_file
     write(old_file, file)
   end

@@ -1,11 +1,15 @@
 main_folder = "$(dirname(@__FILE__))/.."
 
+include("$main_folder/src/functions/utils/get_all_files.jl")
+include("$main_folder/src/functions/utils/include_all_files.jl")
+include("$main_folder/src/macros/export_all_files.jl")
+
 loaded_folders = [ "config/initializers" , "src" , "lib/tasks" ]
 
 for loaded_folder in loaded_folders
   loaded_folder = "$main_folder/$loaded_folder"
 
-  Julz.include_all_files(loaded_folder, package_name="{{ app }}")
+  Julz.include_all_files(loaded_folder, package_name="Julz")
   @eval Julz.@export_all_files $loaded_folder
 end
 
@@ -41,9 +45,3 @@ function load_input(raw_input, is_file_input=false, can_be_missing=false)
 end
 
 print_workspace() = Julz.print_workspace({{ app }})
-
-defaults_file_name = "defaults.jl"
-load_input(defaults_file_name, true)
-
-scratch_file_name = "tmp/scratch.jl"
-Julz.load_input(scratch_file_name, true, true)
