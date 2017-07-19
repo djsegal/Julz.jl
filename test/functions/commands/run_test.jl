@@ -27,4 +27,23 @@
 
   end
 
+  test_input = ["\"woof\""]
+  test_output = "404 - woof\n"
+
+  originalSTDOUT = STDOUT
+
+  (outRead, outWrite) = redirect_stdout()
+
+  Julz.run("example_task", test_input)
+
+  close(outWrite)
+
+  data = readavailable(outRead)
+
+  close(outRead)
+
+  redirect_stdout(originalSTDOUT)
+
+  @test String(data) == test_output
+
 end

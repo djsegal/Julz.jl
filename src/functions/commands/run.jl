@@ -12,7 +12,7 @@ function run(args::Dict)
 
 end
 
-function run(cur_task::String, task_params::AbstractArray)
+function run(cur_task::String, task_params::AbstractArray=[])
 
   target_name = bump()
 
