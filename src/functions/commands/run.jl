@@ -6,11 +6,13 @@ function run(args::Dict)
     cur_task = "main"
   end
 
-  run(cur_task::String)
+  task_params = args["<field>"]
+
+  run(cur_task, task_params)
 
 end
 
-function run(cur_task::String)
+function run(cur_task::String, task_params::AbstractArray)
 
   target_name = bump()
 
@@ -18,6 +20,6 @@ function run(cur_task::String)
     eval(parse("using $target_name"))
   end
 
-  eval(parse("$target_name.$cur_task()"))
+  eval(parse("$target_name.$cur_task($(join(task_params,",")))"))
 
 end
