@@ -9,6 +9,10 @@ module JulzDummy
   function main()
     load_input("input.jl", true)
 
+    open("output.jl", "w") do cur_file
+      write(cur_file, "output = []")
+    end
+
     println("done.")
   end
 

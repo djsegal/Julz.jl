@@ -28,3 +28,5 @@ docs/build/
 docs/site/
 
 *-checkpoint.ipynb
+
+output.jl

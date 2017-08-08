@@ -7,7 +7,11 @@
     "example_task" => "404\n"
   )
 
+  output_file_name = "output.jl"
+
   for (cur_task, cur_output) in run_examples
+
+    if isfile(output_file_name) ; rm(output_file_name) ; end
 
     originalSTDOUT = STDOUT
 
@@ -24,6 +28,10 @@
     redirect_stdout(originalSTDOUT)
 
     @test String(data) == cur_output
+
+    if cur_task == "main"
+      @test isfile(output_file_name)
+    end
 
   end
 

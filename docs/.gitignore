@@ -21,3 +21,5 @@ testem.log
 /docs/build/*
 
 *-checkpoint.ipynb
+
+output.jl
