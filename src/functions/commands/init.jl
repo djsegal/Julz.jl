@@ -100,11 +100,13 @@ function add_code_to_main_file(parent_folder)
     end
   end
 
-  new_text_array = ["$(file[insert_index])$template"]
+  merge_char = ( template_name == "runtests" ) ? "\n" : ""
+
+  new_text_array = ["$(file[insert_index])$(merge_char)$template"]
   splice!(file, insert_index, new_text_array)
 
   open(file_path, "w") do old_file
-    write(old_file, file)
+    write(old_file, join(file, merge_char))
   end
 end
 
