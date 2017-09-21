@@ -7,6 +7,16 @@ end
 
 function destroy(file_type, file_name)
 
+  if file_type == "init"
+    rm("$(pwd())/config/initializers/$file_name.jl")
+    return
+  end
+
+  if file_type == "task"
+    rm("$(pwd())/lib/tasks/$file_name.jl")
+    return
+  end
+
   parent_folders = [
     "src",
     "test"
