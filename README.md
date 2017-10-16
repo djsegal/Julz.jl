@@ -12,6 +12,12 @@ A framework for creating scalable Julia packages.
 Pkg.add("Julz")
 ```
 
+*\* for newest version, use `Pkg.clone("https://github.com/djsegal/Tokamak.jl")`*
+
 ## Documentation
 
 - http://djsegal.github.io/Julz.jl
+
+## Example Codebase
+
+- https://github.com/djsegal/Tokamak.jl
