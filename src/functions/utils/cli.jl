@@ -40,6 +40,7 @@ Help:
 """
 
 using DocOpt  # import docopt function
+
 import Julz
 
 function cli()
