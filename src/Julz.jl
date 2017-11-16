@@ -3,8 +3,13 @@ module Julz
   using Mustache
   using EnglishText
   using PkgDev
-  using DataStructures
   using Revise
+
+  using Reexport
+
+  export @reexport
+
+  @reexport using DataStructures
 
   cd("$(dirname(@__FILE__))/..") do
     include("../config/bootload.jl")
