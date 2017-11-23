@@ -11,11 +11,16 @@ macro export_all_files(cur_item)
 
     exported_object = Symbol(cur_export)
 
-    cur_block = quote
-      export $(esc(exported_object))
-    end
+    for added_string in ["", "!"]
+      cur_export *= added_string
+      exported_object = Symbol(cur_export)
 
-    append!(cur_expression.args, cur_block.args)
+      cur_block = quote
+        export $(esc(exported_object))
+      end
+
+      append!(cur_expression.args, cur_block.args)
+    end
   end
 
   cur_expression
