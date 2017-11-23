@@ -9,7 +9,7 @@ macro export_all_files(cur_item)
 
     cur_export = replace(cur_export, ".jl", "")
 
-    exported_object = Symbol(cur_export)
+    in(cur_export, julia_reserved_words) && continue
 
     for added_string in ["", "!"]
       cur_export *= added_string
