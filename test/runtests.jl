@@ -1,4 +1,4 @@
-import Julz
+using Julz
 using Base.Test
 using TestSetExtensions
 

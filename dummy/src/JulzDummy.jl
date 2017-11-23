@@ -1,6 +1,6 @@
 module JulzDummy
 
-  import Julz
+  using Julz
 
   cd("$(dirname(@__FILE__))/..") do
     include("../config/bootload.jl")
