@@ -48,7 +48,10 @@ function clean_files_list(nested_files, package_name=nothing)
 
   push!(delete_list, "/input.jl")
 
+  push!(delete_list, "src/functions/utils/flatten.jl")
+  push!(delete_list, "src/functions/utils/delete_method.jl")
   push!(delete_list, "src/functions/utils/get_all_files.jl")
+  push!(delete_list, "src/functions/utils/get_all_symbols.jl")
   push!(delete_list, "src/functions/utils/include_all_files.jl")
   push!(delete_list, "src/macros/export_all_files.jl")
 

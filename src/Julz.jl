@@ -1,7 +1,8 @@
 module Julz
 
-  using Mustache
+  using Compat
   using EnglishText
+  using Mustache
   using PkgDev
   using Revise
 

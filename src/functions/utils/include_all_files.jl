@@ -3,7 +3,7 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
   all_files = get_all_files(cur_item, package_name=package_name, is_testing=is_testing, is_sorted=is_sorted)
   unloaded_files = setdiff(all_files, loaded_files)
 
-  cur_module = eval(parse("Main.$package_name"))
+  cur_module = getfield(Main, Symbol(package_name))
 
   while length(unloaded_files) > 0
     new_file_count = 0
@@ -11,6 +11,14 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
     for file in all_files
       is_already_loaded = in(file, loaded_files)
       if is_already_loaded ; continue ; end
+
+      init_methods_list = filter(
+        cur_list -> !isempty(cur_list),
+        map(
+          cur_var -> try methods(getfield(cur_module, cur_var)) ; catch [] ; end,
+          Julz.get_all_symbols(cur_module)
+        )
+      )
 
       try
 
@@ -48,6 +56,55 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
         end
 
       catch
+
+        cur_methods_list = filter(
+          cur_list -> !isempty(cur_list),
+          map(
+            cur_var -> try methods(getfield(cur_module, cur_var)) ; catch [] ; end,
+            Julz.get_all_symbols(cur_module)
+          )
+        )
+
+        cur_methods_list = setdiff(cur_methods_list, init_methods_list)
+
+        cur_methods_list = map(
+          cur_methods -> filter(
+            cur_method -> cur_method.module == cur_module,
+            cur_methods.ms
+          ),
+          cur_methods_list
+        )
+
+        cur_methods = flatten(cur_methods_list)
+
+        for cur_method in cur_methods
+          delete_method(cur_method)
+        end
+
+        Docs.initmeta(cur_module)
+
+        for cur_method in cur_methods
+          cur_method_name = cur_method.name
+
+          b = Docs.Binding(cur_module, cur_method_name)
+          m = get!(Docs.meta(cur_module), b, Docs.MultiDoc())
+
+          cur_sig_string = string(cur_method.sig)
+
+          cur_sig_string = replace(cur_sig_string, "$(cur_module).#$(cur_method_name)", "")
+          cur_sig_string = replace(cur_sig_string, "{,", "{")
+
+          cur_sig = eval(parse(string(cur_sig_string)))
+
+          cur_keys = collect(keys(m.docs))
+
+          for cur_key in cur_keys
+            ( cur_sig <: cur_key ) || continue
+
+            delete!(m.docs, cur_key)
+          end
+        end
+
         continue
       end
 

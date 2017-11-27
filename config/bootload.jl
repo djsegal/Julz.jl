@@ -1,6 +1,9 @@
 main_folder = "$(dirname(@__FILE__))/.."
 
+include("$main_folder/src/functions/utils/flatten.jl")
+include("$main_folder/src/functions/utils/delete_method.jl")
 include("$main_folder/src/functions/utils/get_all_files.jl")
+include("$main_folder/src/functions/utils/get_all_symbols.jl")
 include("$main_folder/src/functions/utils/include_all_files.jl")
 include("$main_folder/src/macros/export_all_files.jl")
 
