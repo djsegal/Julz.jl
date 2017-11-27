@@ -5,8 +5,9 @@ loaded_folders = [ "config/initializers" , "src" , "lib/tasks" ]
 for loaded_folder in loaded_folders
   loaded_folder = "$main_folder/$loaded_folder"
 
-  Julz.include_all_files(loaded_folder, package_name="JulzDummy", is_revised=false)
-  @eval Julz.@export_all_files $loaded_folder
+  cur_package_name="JulzDummy"
+  Julz.include_all_files(loaded_folder, package_name=cur_package_name, is_revised=false)
+  @eval Julz.@export_all_files $loaded_folder $cur_package_name
 end
 
 function load_input(raw_input, is_file_input=false, can_be_missing=false, is_init_load=false)
