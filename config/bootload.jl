@@ -45,9 +45,9 @@ function load_input(raw_input, is_file_input=false, can_be_missing=false, is_ini
     end
   end
 
-  old_symbols = get_all_symbols(Julz)
+  old_symbols = Julz.get_all_symbols(Julz)
   eval( parse(raw_input) )
-  new_symbols = setdiff(get_all_symbols(Julz), old_symbols)
+  new_symbols = setdiff(Julz.get_all_symbols(Julz), old_symbols)
 
   is_init_load && ( new_symbols = [] )
 
