@@ -12,13 +12,7 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
       is_already_loaded = in(file, loaded_files)
       if is_already_loaded ; continue ; end
 
-      init_methods_list = filter(
-        cur_list -> !isempty(cur_list),
-        map(
-          cur_var -> try methods(getfield(cur_module, cur_var)) ; catch [] ; end,
-          Julz.get_all_symbols(cur_module)
-        )
-      )
+      init_methods_list = get_cur_methods_list(cur_module)
 
       try
 
@@ -57,25 +51,9 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
 
       catch
 
-        cur_methods_list = filter(
-          cur_list -> !isempty(cur_list),
-          map(
-            cur_var -> try methods(getfield(cur_module, cur_var)) ; catch [] ; end,
-            Julz.get_all_symbols(cur_module)
-          )
-        )
+        cur_methods_list = get_cur_methods_list(cur_module)
 
-        cur_methods_list = setdiff(cur_methods_list, init_methods_list)
-
-        cur_methods_list = map(
-          cur_methods -> filter(
-            cur_method -> cur_method.module == cur_module,
-            cur_methods.ms
-          ),
-          cur_methods_list
-        )
-
-        cur_methods = flatten(cur_methods_list)
+        cur_methods = setdiff(cur_methods_list, init_methods_list)
 
         for cur_method in cur_methods
           delete_method(cur_method)
@@ -120,4 +98,24 @@ function include_all_files(cur_item; package_name=nothing, is_testing=false, is_
       include(bad_file)
     end
   end
+end
+
+function get_cur_methods_list(cur_module)
+  cur_methods_list = filter(
+    cur_list -> !isempty(cur_list),
+    map(
+      cur_var -> try methods(getfield(cur_module, cur_var)) ; catch [] ; end,
+      Julz.get_all_symbols(cur_module)
+    )
+  )
+
+  cur_methods_list = map(
+    cur_methods -> filter(
+      cur_method -> cur_method.module == cur_module,
+      cur_methods.ms
+    ),
+    cur_methods_list
+  )
+
+  flatten(cur_methods_list)
 end
