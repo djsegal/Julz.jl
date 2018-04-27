@@ -10,6 +10,7 @@ makedocs(
 )
 
 deploydocs(
+  julia = "nightly",
   repo = "github.com/djsegal/JulzDummy.jl.git",
   target = "build",
   deps = nothing,

@@ -12,6 +12,7 @@ makedocs(
 )
 
 deploydocs(
+  julia = "nightly",
   repo = "github.com/{{ user }}/{{ app }}.jl.git",
   target = "build",
   deps = nothing,
